@@ -40,7 +40,7 @@ const App: React.FC = () => {
 const GeneralRoute: React.FC = () => (
   <React.Fragment>
     <Header />
-    <hr/>
+    <hr />
     <Routes>
       <Route path="home" element={<Home />} />
       <Route path="/product/:name/:id" element={<ProductDetails />} />

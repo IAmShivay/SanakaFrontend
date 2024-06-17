@@ -8,6 +8,7 @@ import {
   Button,
   Collapse,
   Paper,
+  Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -109,7 +110,7 @@ const Header: React.FC = () => {
               </Typography>
             </CustomLink>
           </MenuItem>
-          <MenuItem onClick={handleMoreToggle} sx={{ position: "relative" }}>
+          {/* <MenuItem onClick={handleMoreToggle} sx={{ position: "relative" }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography variant="body1" color="inherit">
                 More
@@ -117,26 +118,32 @@ const Header: React.FC = () => {
               {moreOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
             <Collapse in={moreOpen} timeout="auto" unmountOnExit>
-              <Paper
-                sx={{
-                  position: "absolute",
-                  top: "100%",
-                  left: 0,
-                  width: "max-content",
-                  bgcolor: "white",
-                  zIndex: 1,
-                  mt: 1,
-                }}
-              >
-                <MenuItem onClick={handleClose}>
-                  <CustomLink href="/subcategory1">Subcategory 1</CustomLink>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <CustomLink href="/subcategory2">Subcategory 2</CustomLink>
-                </MenuItem>
-              </Paper>
-            </Collapse>
-          </MenuItem>
+      <Box
+        sx={{
+          position: 'relative',
+          mt: 1,
+        }}
+      >
+        <Paper
+          sx={{
+            position: 'absolute',
+            top: 0, // Aligns the subcategories right under the parent
+            left: 0,
+            width: 'max-content',
+            bgcolor: 'white',
+            zIndex: 1,
+          }}
+        >
+          <Box onClick={handleClose} >
+            <Typography variant="body1">Subcategory 1</Typography>
+          </Box>
+          <Box onClick={handleClose}>
+            <Typography variant="body1">Subcategory 2</Typography>
+          </Box>
+        </Paper>
+      </Box>
+    </Collapse>
+          </MenuItem> */}
           <Box
             sx={{
               marginLeft: "auto",

@@ -1,4 +1,5 @@
-// LoginPage.tsx
+
+
 import React, { useState, ChangeEvent } from "react";
 import {
   TextField,
@@ -39,7 +40,7 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
-      await dispatch(loginUser(formData));
+      dispatch(loginUser(formData));
     } catch (err) {
       console.log(err);
       // Handle registration error here, you can set an error state and display it to the user
