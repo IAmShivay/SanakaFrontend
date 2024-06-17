@@ -42,7 +42,7 @@ const GeneralRoute: React.FC = () => (
     <Header />
     <hr />
     <Routes>
-      <Route path="home" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/product/:name/:id" element={<ProductDetails />} />
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />

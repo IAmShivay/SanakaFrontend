@@ -3,6 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import FeaturedProducts from "../Section/Featured Products/featuredProduct";
 import Bestsellers from "../Section/BestSellers/bestSellers";
+// import NoticeBoard from "../Notification/Notification";
 
 const products = [
   {
@@ -50,7 +51,7 @@ const CarouselComponent: React.FC = () => {
           height: 500,
           position: "relative",
           overflow: "hidden",
-          background: "linear-gradient(135deg, #ff7e5f, #feb47b)",
+          background: "linear-gradient(135deg, #0135af, #FFFFFF)",
           clipPath: "polygon(0 0, 100% 0, 100% 85%, 0% 100%)",
           display: "flex",
           alignItems: "center",
@@ -165,12 +166,13 @@ const CarouselComponent: React.FC = () => {
           &gt;
         </Button>
       </Box>
-      <Box sx={{ padding: 3 }}>
+      {/* <Box sx={{ padding: 3 }}>
         <FeaturedProducts />
       </Box>
       <Box sx={{ padding: 3 }}>
         <Bestsellers />
-      </Box>
+      </Box> */}
+      {/* <NoticeBoard/> */}
     </>
   );
 };
