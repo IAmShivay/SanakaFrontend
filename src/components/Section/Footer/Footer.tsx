@@ -52,14 +52,14 @@ const Footer = () => {
           <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
             Support
           </Typography>
-          <Typography variant="body2" gutterBottom>
+          <Typography  variant="body2" gutterBottom>
             Customer Service
           </Typography>
           <Typography variant="body2" gutterBottom>
             Returns
           </Typography>
           <Typography variant="body2" gutterBottom>
-            Shipping
+            About Us
           </Typography>
           <Typography variant="body2" gutterBottom>
             FAQs
