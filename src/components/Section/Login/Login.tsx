@@ -1,5 +1,3 @@
-
-
 import React, { useState, ChangeEvent } from "react";
 import {
   TextField,
@@ -9,6 +7,7 @@ import {
   Typography,
   Paper,
   Link,
+  CircularProgress,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -17,7 +16,7 @@ import { loginUser } from "../../../app/auth/authSlice";
 import { AppDispatch } from "../../../store";
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting, setSubmitting] = useState<boolean>(false);
 
   interface FormState {
     email: string;
@@ -114,14 +113,15 @@ const LoginPage: React.FC = () => {
           <Button
             variant="contained"
             color="primary"
-            fullWidth
-            style={{
-              marginTop: "16px",
-              marginBottom: "16px",
-            }}
             onClick={handleSubmit}
+            disabled={submitting}
+            sx={{ position: "relative" }}
           >
-            Login
+            {submitting ? (
+              <CircularProgress size={24} sx={{ color: "white" }} />
+            ) : (
+              "Submit"
+            )}
           </Button>
 
           <Typography

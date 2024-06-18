@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./store.tsx";
 // import Products from "./components/Section/products/Products.tsx";
 import LoadingComponent from "./components/Loading/Loading.tsx";
-import ProductDetails from "./components/Section/ProductDetails/ProductDetails.tsx";
+// import ProductDetails from "./components/Section/ProductDetails/ProductDetails.tsx";
 import NotificationBar from "./components/Notification/Notification.tsx";
 
 const Footer = lazy(() => import("./components/Section/Footer/Footer"));
@@ -48,7 +48,6 @@ const GeneralRoute: React.FC = () => (
 
     <Routes>
       <Route path="/home" element={<Home />} />
-      <Route path="/product/:name/:id" element={<ProductDetails />} />
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
       {/* <Route path="products" element={<Products />} /> */}

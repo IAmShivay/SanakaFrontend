@@ -4,8 +4,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-
-const Header = ({ onMenuClick }) => {
+interface HeaderProps {
+  onMenuClick: () => void; // or any specific function signature if it takes arguments
+}
+const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   return (
     <AppBar position="static">
       <Toolbar>
