@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from "react";
 import {
   Menu,
@@ -7,12 +6,9 @@ import {
   IconButton,
   Typography,
   Button,
-  Collapse,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -22,23 +18,17 @@ import CustomLink from "../CustomLink/Links";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [moreOpen, setMoreOpen] = useState<boolean>(false);
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
   const isMd = useMediaQuery(theme.breakpoints.down("md"));
-  const menuAnchorRef = useRef<null | HTMLElement>(null);
+  const menuAnchorRef = useRef(null);
 
   const handleMenuToggle = (): void => {
     setMenuOpen((prev) => !prev);
   };
 
-  const handleMoreToggle = (): void => {
-    setMoreOpen((prev) => !prev);
-  };
-
   const handleClose = (): void => {
     setMenuOpen(false);
-    setMoreOpen(false);
   };
 
   return (
@@ -55,7 +45,7 @@ const Header: React.FC = () => {
       </Box>
       {isSm || isMd ? (
         <>
-          <Button onClick={handleMenuToggle}>
+          <Button ref={menuAnchorRef} onClick={handleMenuToggle}>
             {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </Button>
           <Menu
@@ -66,48 +56,42 @@ const Header: React.FC = () => {
             transformOrigin={{ vertical: "top", horizontal: "right" }}
           >
             <MenuItem onClick={handleClose}>
-              <CustomLink href="/home">About Us</CustomLink>
+              <CustomLink href="/aboutUs">About Us</CustomLink>
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <CustomLink href="/products">Courses</CustomLink>
+              <CustomLink href="/academics">Academics</CustomLink>
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            {/* <MenuItem onClick={handleClose}>
               <CustomLink href="/contactUs">Admission</CustomLink>
+            </MenuItem> */}
+            <MenuItem onClick={handleClose}>
+              <CustomLink href="/contactUs">Administration</CustomLink>
             </MenuItem>
-            <MenuItem onClick={handleMoreToggle}>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography>More</Typography>
-                {moreOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-              </Box>
-            </MenuItem>
-            <Collapse in={moreOpen} timeout="auto" unmountOnExit>
-              <Box sx={{ bgcolor: "white", mt: 1 }}>
-                <MenuItem onClick={handleClose}>
-                  <CustomLink href="/subcategory1">Subcategory 1</CustomLink>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <CustomLink href="/subcategory2">Subcategory 2</CustomLink>
-                </MenuItem>
-              </Box>
-            </Collapse>
           </Menu>
         </>
       ) : (
         <Box sx={{ display: "flex", flexGrow: 1, gap: 2, height: "5vh" }}>
           <MenuItem onClick={handleClose}>
-            <CustomLink href="/home">About Us</CustomLink>
+            <CustomLink href="/aboutUs">About Us</CustomLink>
           </MenuItem>
           <MenuItem>
-            <CustomLink href="/products">
+            <CustomLink href="/academics">
               <Typography variant="body1" color="inherit">
-                Courses
+                Academics
               </Typography>
             </CustomLink>
           </MenuItem>
-          <MenuItem>
+          {/* <MenuItem>
             <CustomLink href="/contactUs">
               <Typography variant="body1" color="inherit">
                 Admission
+              </Typography>
+            </CustomLink>
+          </MenuItem> */}
+          <MenuItem onClick={handleClose}>
+            <CustomLink href="/administration">
+              <Typography variant="body1" color="inherit">
+                Administration
               </Typography>
             </CustomLink>
           </MenuItem>
@@ -119,7 +103,7 @@ const Header: React.FC = () => {
               alignItems: "center",
             }}
           >
-            <CustomLink href="/aboutUs">
+            <CustomLink href="/contactUs">
               <Button
                 variant="outlined"
                 color="inherit"
@@ -130,7 +114,7 @@ const Header: React.FC = () => {
             </CustomLink>
             <Box sx={{ display: "flex", gap: 1 }}>
               <IconButton
-                href="https://wa.me/1234567890" // Replace with your WhatsApp number
+                href="https://wa.me/1234567890"
                 target="_blank"
                 color="primary"
               >
@@ -139,19 +123,19 @@ const Header: React.FC = () => {
               <Button
                 variant="outlined"
                 startIcon={<PhoneIcon />}
-                href="tel:+1234567890" // Replace with your IVR number 1
+                href="tel:+08017508002"
               >
                 IVR 1
               </Button>
               <Button
                 variant="outlined"
                 startIcon={<PhoneIcon />}
-                href="tel:+0987654321" // Replace with your IVR number 2
+                href="tel:+8918857722"
               >
                 IVR 2
               </Button>
             </Box>
-            <CustomLink href="/hiiUs">
+            <CustomLink href="/user/register">
               <Button
                 variant="contained"
                 sx={{ backgroundColor: "black", borderRadius: 0 }}

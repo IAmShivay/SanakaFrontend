@@ -47,10 +47,9 @@ const GeneralRoute: React.FC = () => (
     />
 
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
-      {/* <Route path="products" element={<Products />} /> */}
     </Routes>
     <Footer />
   </React.Fragment>

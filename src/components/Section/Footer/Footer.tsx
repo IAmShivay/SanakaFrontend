@@ -70,13 +70,13 @@ const Footer = () => {
             Contact
           </Typography>
           <Typography variant="body2" gutterBottom>
-            Email: info@bata.com
+            Email: durgapurfoundation.23@gmail.com
           </Typography>
           <Typography variant="body2" gutterBottom>
-            Phone: 123-456-7890
+            Phone: 8017508002
           </Typography>
           <Typography variant="body2" gutterBottom>
-            Address: 123 Street, City, Country
+            Address: Malandighi, Kanksha, Durgapur-713212, India
           </Typography>
         </Grid>
       </Grid>
