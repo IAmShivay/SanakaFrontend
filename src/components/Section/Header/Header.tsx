@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import {
   Menu,
@@ -12,28 +13,30 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PhoneIcon from "@mui/icons-material/Phone";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Logo from "../../Loader.svg";
 import CustomLink from "../CustomLink/Links";
 
 const Header: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [moreOpen, setMoreOpen] = useState<boolean>(false);
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
   const isMd = useMediaQuery(theme.breakpoints.down("md"));
-  const menuAnchorRef = useRef(null);
+  const menuAnchorRef = useRef<null | HTMLElement>(null);
 
-  const handleMenuToggle = () => {
+  const handleMenuToggle = (): void => {
     setMenuOpen((prev) => !prev);
   };
 
-  const handleMoreToggle = () => {
+  const handleMoreToggle = (): void => {
     setMoreOpen((prev) => !prev);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setMenuOpen(false);
     setMoreOpen(false);
   };
@@ -52,9 +55,9 @@ const Header: React.FC = () => {
       </Box>
       {isSm || isMd ? (
         <>
-          <IconButton ref={menuAnchorRef} onClick={handleMenuToggle}>
+          <Button onClick={handleMenuToggle}>
             {menuOpen ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
+          </Button>
           <Menu
             open={menuOpen}
             onClose={handleClose}
@@ -108,40 +111,6 @@ const Header: React.FC = () => {
               </Typography>
             </CustomLink>
           </MenuItem>
-          {/* <MenuItem onClick={handleMoreToggle} sx={{ position: "relative" }}>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Typography variant="body1" color="inherit">
-                More
-              </Typography>
-              {moreOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </Box>
-            <Collapse in={moreOpen} timeout="auto" unmountOnExit>
-      <Box
-        sx={{
-          position: 'relative',
-          mt: 1,
-        }}
-      >
-        <Paper
-          sx={{
-            position: 'absolute',
-            top: 0, // Aligns the subcategories right under the parent
-            left: 0,
-            width: 'max-content',
-            bgcolor: 'white',
-            zIndex: 1,
-          }}
-        >
-          <Box onClick={handleClose} >
-            <Typography variant="body1">Subcategory 1</Typography>
-          </Box>
-          <Box onClick={handleClose}>
-            <Typography variant="body1">Subcategory 2</Typography>
-          </Box>
-        </Paper>
-      </Box>
-    </Collapse>
-          </MenuItem> */}
           <Box
             sx={{
               marginLeft: "auto",
@@ -159,6 +128,29 @@ const Header: React.FC = () => {
                 Contact
               </Button>
             </CustomLink>
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <IconButton
+                href="https://wa.me/1234567890" // Replace with your WhatsApp number
+                target="_blank"
+                color="primary"
+              >
+                <WhatsAppIcon />
+              </IconButton>
+              <Button
+                variant="outlined"
+                startIcon={<PhoneIcon />}
+                href="tel:+1234567890" // Replace with your IVR number 1
+              >
+                IVR 1
+              </Button>
+              <Button
+                variant="outlined"
+                startIcon={<PhoneIcon />}
+                href="tel:+0987654321" // Replace with your IVR number 2
+              >
+                IVR 2
+              </Button>
+            </Box>
             <CustomLink href="/hiiUs">
               <Button
                 variant="contained"
