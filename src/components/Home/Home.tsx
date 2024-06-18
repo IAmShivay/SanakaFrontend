@@ -154,13 +154,13 @@ const CarouselComponent: React.FC = () => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  backgroundColor: "rgba(0, 0, 0, 0.4)",
                   color: "#fff",
                   padding: 3,
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h6" sx={{ fontWeight: "bold", width:'30vh' }}>
+                <Typography variant="h6" sx={{ fontWeight: "bold", width:'auto' }}>
                   {product.title}
                 </Typography>
                 <Typography variant="body1" sx={{ marginBottom: 1 }}>
