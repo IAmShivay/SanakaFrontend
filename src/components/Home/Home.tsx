@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import FeaturedProducts from "../Section/Featured Products/featuredProduct";
-import Bestsellers from "../Section/BestSellers/bestSellers";
-// import NoticeBoard from "../Notification/Notification";
+import TabWithPopup from "../PopupForm/PopupForm";
 
-const products = [
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+interface FormData {
+  name: string;
+  email: string;
+  PhoneNumber: string;
+}
+
+const products: Product[] = [
   {
     id: 1,
     title: "Product 1",
@@ -29,23 +40,54 @@ const variants = {
 };
 
 const CarouselComponent: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [formFilled, setFormFilled] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handleOpen = useCallback(() => {
+    if (!formFilled) {
+      setIsOpen(true);
+    } else {
+      console.log("The form is already filled. Popup is disabled.");
+    }
+  }, [formFilled]);
 
-  const nextProduct = () => {
+  const handleSubmit = (formData: FormData) => {
+    const hasContent =
+      formData.name.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      formData.PhoneNumber.trim() !== "";
+
+    if (hasContent) {
+      setFormFilled(true);
+      setIsOpen(false);
+    } else {
+      alert("Form is not filled out completely. Please fill it out.");
+    }
+  };
+
+  const handleFormChange = useCallback(
+    (data: { name: string; email: string }) => {
+      setFormFilled(data.name !== "" && data.email !== "");
+    },
+    []
+  );
+
+  const nextProduct = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === products.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, []);
 
-  const prevProduct = () => {
+  const prevProduct = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? products.length - 1 : prevIndex - 1
     );
-  };
+  }, []);
 
   return (
     <>
       <Box
+        onClick={handleOpen}
         sx={{
           width: "100%",
           height: 500,
@@ -56,6 +98,7 @@ const CarouselComponent: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          borderRadius: "5px",
         }}
       >
         {products.map((product, index) => (
@@ -101,12 +144,7 @@ const CarouselComponent: React.FC = () => {
                   borderTopRightRadius: "16px",
                 }}
               />
-              <Box
-                sx={{
-                  padding: 3,
-                  textAlign: "center",
-                }}
-              >
+              <Box sx={{ padding: 3, textAlign: "center" }}>
                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                   {product.title}
                 </Typography>
@@ -138,7 +176,7 @@ const CarouselComponent: React.FC = () => {
             padding: "10px",
             minWidth: "40px",
             borderRadius: "50%",
-            '&:hover': {
+            "&:hover": {
               backgroundColor: "rgba(0, 0, 0, 0.7)",
             },
           }}
@@ -158,7 +196,7 @@ const CarouselComponent: React.FC = () => {
             padding: "10px",
             minWidth: "40px",
             borderRadius: "50%",
-            '&:hover': {
+            "&:hover": {
               backgroundColor: "rgba(0, 0, 0, 0.7)",
             },
           }}
@@ -166,13 +204,12 @@ const CarouselComponent: React.FC = () => {
           &gt;
         </Button>
       </Box>
-      {/* <Box sx={{ padding: 3 }}>
-        <FeaturedProducts />
-      </Box>
-      <Box sx={{ padding: 3 }}>
-        <Bestsellers />
-      </Box> */}
-      {/* <NoticeBoard/> */}
+      <TabWithPopup
+        isOpen={isOpen}
+        onSubmit={handleSubmit}
+        formFilled={formFilled}
+        onFormChange={handleFormChange}
+      />
     </>
   );
 };
