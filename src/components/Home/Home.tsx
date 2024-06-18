@@ -90,7 +90,7 @@ const CarouselComponent: React.FC = () => {
         onClick={handleOpen}
         sx={{
           width: "100%",
-          height: 500,
+          height: { xs: 300, md: 500 },
           position: "relative",
           overflow: "hidden",
           background: "linear-gradient(135deg, #0135af, #FFFFFF)",
@@ -122,8 +122,8 @@ const CarouselComponent: React.FC = () => {
             <Box
               sx={{
                 position: "relative",
-                width: "80%",
-                height: "80%",
+                width: { xs: "90%", md: "80%" },
+                height: { xs: "90%", md: "80%" },
                 overflow: "hidden",
                 borderRadius: "16px",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.7)",
@@ -139,8 +139,7 @@ const CarouselComponent: React.FC = () => {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
-                  borderRadius: "16px",
+                  borderRadius: "10px",
                 }}
               />
               <Box
@@ -148,7 +147,7 @@ const CarouselComponent: React.FC = () => {
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "auto",
+                  width: "100%",
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
@@ -156,21 +155,39 @@ const CarouselComponent: React.FC = () => {
                   alignItems: "center",
                   backgroundColor: "rgba(0, 0, 0, 0.4)",
                   color: "#fff",
-                  padding: 3,
+                  padding: { xs: 1, md: 3 },
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h6" sx={{ fontWeight: "bold", width:'auto' }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "bold",
+                    width: { xs: "90%", md: 'auto' },
+                    fontSize: { xs: '1rem', md: '1.5rem' },
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
                   {product.title}
                 </Typography>
-                <Typography variant="body1" sx={{ marginBottom: 1 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    marginBottom: 1,
+                    fontSize: { xs: '0.75rem', md: '1rem' },
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    width: { xs: "90%", md: 'auto' },
+                  }}
+                >
                   {product.description}
                 </Typography>
                 <Button
                   href={product.link}
                   variant="contained"
                   color="primary"
-                  sx={{ marginTop: 2 }}
+                  sx={{ marginTop: 2, fontSize: { xs: '0.75rem', md: '1rem' } }}
                 >
                   View More
                 </Button>
@@ -225,7 +242,7 @@ const CarouselComponent: React.FC = () => {
         formFilled={formFilled}
         onFormChange={handleFormChange}
       />
-      <ActionAreaCard/>
+      <ActionAreaCard />
     </>
   );
 };

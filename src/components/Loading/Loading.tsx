@@ -11,13 +11,13 @@ const LoadingComponent = () => {
       width="auto"
       bgcolor="#f5f5f5"
     >
-      <CircularProgress sx={{color:"#FF8B66"}} size={60} thickness={3.5} />
+      <CircularProgress sx={{color:"#0035b3"}} size={60} thickness={3.5} />
       <Typography
         variant="h6"
         component="div"
         style={{
           marginTop: '20px',
-          color: '#FF8B66',
+          color: '#0035b3',
           textTransform: 'uppercase',
           fontWeight: 'bold',
           letterSpacing: '1.5px',
