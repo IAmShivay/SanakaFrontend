@@ -12,7 +12,7 @@ const Footer = () => {
       <Grid container spacing={4}>
         <Grid item xs={12} md={4} style={{ marginBottom: '20px' }}>
           <Grid container direction="column" alignItems="flex-start">
-            <img src="/logo.png" alt="Logo" style={{ height: '50px', marginBottom: '10px' }} />
+            <img src="images/Loader.svg" alt="Logo" style={{ height: '50px', marginBottom: '10px' }} />
             <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
               Newsletter Signup
             </Typography>
@@ -50,13 +50,7 @@ const Footer = () => {
         </Grid>
         <Grid item xs={12} md={4} style={{ marginBottom: '20px' }}>
           <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
-            Support
-          </Typography>
-          <Typography  variant="body2" gutterBottom>
-            Customer Service
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            Returns
+            Quick Links
           </Typography>
           <Typography variant="body2" gutterBottom>
             About Us
@@ -80,38 +74,26 @@ const Footer = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container justifyContent="space-between" alignItems="center" style={{ marginTop: '20px' }}>
-        <Grid item xs={12} md={4} style={{ textAlign: 'center' }}>
-          <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>Download Our App</Typography>
-          <motion.img src="/appstore.png" alt="App Store" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
-          <motion.img src="/playstore.png" alt="Play Store" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
-        </Grid>
-        <Grid item xs={12} md={4} style={{ textAlign: 'center' }}>
+      <Grid container style={{ marginTop: '20px' }}>
+        <Grid item xs={12} md={4}>
           <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>Follow Us On</Typography>
-          <Grid container justifyContent="center">
+          <Grid container >
             <Grid item>
-              <motion.img src="/facebook.png" alt="Facebook" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
+              <motion.img src="/icons8-facebook-48.png" alt="Facebook" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
             </Grid>
             <Grid item>
-              <motion.img src="/twitter.png" alt="Twitter" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
+              <motion.img src="/icons8-website-48.png" alt="Website" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
             </Grid>
             <Grid item>
-              <motion.img src="/instagram.png" alt="Instagram" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={4} style={{ textAlign: 'center' }}>
-          <Typography variant="body2" gutterBottom>© 2024 Your Company. All rights reserved.</Typography>
-          <Grid container justifyContent="center">
-            <Grid item>
-              <motion.img src="/visa.png" alt="Visa" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
-            </Grid>
-            <Grid item>
-              <motion.img src="/rupay.png" alt="Rupay" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
+              <motion.img src="/icons8-whatsapp-96.png" alt="whatsapp" style={{ height: '30px', marginRight: '10px', transition: 'transform 0.3s ease-in-out' }} whileHover={{ scale: 1.1 }} />
             </Grid>
           </Grid>
         </Grid>
       </Grid>
+      <hr/>
+      <Grid item xs={12} md={4} style={{ textAlign: 'center' }}>
+          <Typography variant="body2" gutterBottom>© 2024 Durgapur Education Foundation. All rights reserved.</Typography>
+        </Grid>
     </motion.div>
   );
 };
