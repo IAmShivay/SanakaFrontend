@@ -20,15 +20,15 @@ interface FormData {
 const products: Product[] = [
   {
     id: 1,
-    title: "Product 1",
-    description: "Description of Product 1",
+    title: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital",
+    description: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
     image: "images/SanakaEducation.jpg",
     link: "#",
   },
   {
     id: 2,
-    title: "Product 2",
-    description: "Description of Product 2",
+    title: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital",
+    description: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
     image: "",
     link: "#",
   },
@@ -126,7 +126,7 @@ const CarouselComponent: React.FC = () => {
                 height: "80%",
                 overflow: "hidden",
                 borderRadius: "16px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.7)",
                 backgroundColor: "#fff",
                 display: "flex",
                 flexDirection: "column",
@@ -148,7 +148,7 @@ const CarouselComponent: React.FC = () => {
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
+                  width: "auto",
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
@@ -160,7 +160,7 @@ const CarouselComponent: React.FC = () => {
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h6" sx={{ fontWeight: "bold", width:'30vh' }}>
                   {product.title}
                 </Typography>
                 <Typography variant="body1" sx={{ marginBottom: 1 }}>
