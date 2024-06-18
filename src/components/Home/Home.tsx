@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import TabWithPopup from "../PopupForm/PopupForm";
+import ActionAreaCard from "../Section/Crads/Crads";
 
 interface Product {
   id: number;
@@ -224,6 +225,7 @@ const CarouselComponent: React.FC = () => {
         formFilled={formFilled}
         onFormChange={handleFormChange}
       />
+      <ActionAreaCard/>
     </>
   );
 };

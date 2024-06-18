@@ -6,7 +6,7 @@ export const fetchProducts = async () => {
       `http://localhost:3000/api/v1/product`,
     );
     return response.data.products;
-  } catch (error:{}) {
+  } catch (error:any) {
     if (error.response) {
       const errorMessage = error.response.data.message;
       console.log(errorMessage);
