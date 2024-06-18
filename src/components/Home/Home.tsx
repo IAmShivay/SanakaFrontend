@@ -172,7 +172,7 @@ const CarouselComponent: React.FC = () => {
                   color="primary"
                   sx={{ marginTop: 2 }}
                 >
-                  Buy Now
+                  View More
                 </Button>
               </Box>
             </Box>
