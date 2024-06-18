@@ -23,14 +23,14 @@ const products: Product[] = [
     title: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital",
     description: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
     image: "images/SanakaEducation.jpg",
-    link: "#",
+    link: "/aboutUs",
   },
   {
     id: 2,
     title: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital",
     description: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
     image: "",
-    link: "#",
+    link: "/aboutUs",
   },
 ];
 
