@@ -21,15 +21,14 @@ const products: Product[] = [
     id: 1,
     title: "Product 1",
     description: "Description of Product 1",
-    image: "image1.jpg",
+    image: "images/SanakaEducation.jpg",
     link: "#",
   },
   {
     id: 2,
     title: "Product 2",
     description: "Description of Product 2",
-    image:
-      "https://unsplash.com/photos/woman-in-blue-blazer-and-black-framed-sunglasses-AYN-kdlk6Tg?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash@2x.png",
+    image: "",
     link: "#",
   },
 ];
@@ -138,13 +137,28 @@ const CarouselComponent: React.FC = () => {
                 alt={product.title}
                 style={{
                   width: "100%",
-                  height: "70%",
+                  height: "100%",
                   objectFit: "cover",
-                  borderTopLeftRadius: "16px",
-                  borderTopRightRadius: "16px",
+                  borderRadius: "16px",
                 }}
               />
-              <Box sx={{ padding: 3, textAlign: "center" }}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  color: "#fff",
+                  padding: 3,
+                  textAlign: "center",
+                }}
+              >
                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                   {product.title}
                 </Typography>
