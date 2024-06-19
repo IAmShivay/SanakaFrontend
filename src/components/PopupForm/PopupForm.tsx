@@ -96,7 +96,7 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
         <TextField
           margin="dense"
           name="email"
-          label="Email"
+          label="Place"
           type="email"
           fullWidth
           variant="standard"
