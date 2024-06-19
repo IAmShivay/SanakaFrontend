@@ -1,6 +1,9 @@
+// Footer.js
+import React from "react";
 import { Typography, Grid, TextField, Button } from "@mui/material";
 import { motion } from "framer-motion";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <motion.div
@@ -94,7 +97,7 @@ const Footer = () => {
           </Typography>
           <Typography variant="body2" gutterBottom>
             <Link
-              to="/faqs"
+              to="/faq"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               FAQs
@@ -123,40 +126,46 @@ const Footer = () => {
           </Typography>
           <Grid container>
             <Grid item>
-              <motion.img
-                src="/icons8-facebook-48.png"
-                alt="Facebook"
-                style={{
-                  height: "30px",
-                  marginRight: "10px",
-                  transition: "transform 0.3s ease-in-out",
-                }}
-                whileHover={{ scale: 1.1 }}
-              />
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <motion.img
+                  src="/icons8-facebook-48.png"
+                  alt="Facebook"
+                  style={{
+                    height: "30px",
+                    marginRight: "10px",
+                    transition: "transform 0.3s ease-in-out",
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                />
+              </a>
             </Grid>
             <Grid item>
-              <motion.img
-                src="/icons8-website-48.png"
-                alt="Website"
-                style={{
-                  height: "30px",
-                  marginRight: "10px",
-                  transition: "transform 0.3s ease-in-out",
-                }}
-                whileHover={{ scale: 1.1 }}
-              />
+              <a href="https://www.website.com" target="_blank" rel="noopener noreferrer">
+                <motion.img
+                  src="/icons8-website-48.png"
+                  alt="Website"
+                  style={{
+                    height: "30px",
+                    marginRight: "10px",
+                    transition: "transform 0.3s ease-in-out",
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                />
+              </a>
             </Grid>
             <Grid item>
-              <motion.img
-                src="/icons8-whatsapp-96.png"
-                alt="whatsapp"
-                style={{
-                  height: "30px",
-                  marginRight: "10px",
-                  transition: "transform 0.3s ease-in-out",
-                }}
-                whileHover={{ scale: 1.1 }}
-              />
+              <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer">
+                <motion.img
+                  src="/icons8-whatsapp-96.png"
+                  alt="WhatsApp"
+                  style={{
+                    height: "30px",
+                    marginRight: "10px",
+                    transition: "transform 0.3s ease-in-out",
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                />
+              </a>
             </Grid>
           </Grid>
         </Grid>

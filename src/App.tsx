@@ -11,6 +11,7 @@ import BScNursingPage from "./components/Section/Programs/BSC_NURSING";
 import PGMDMSPage from "./components/Section/Programs/PGMD";
 import GNMPage from "./components/Section/Programs/GNM";
 import ProgramsPage from "./components/Section/Programs";
+import FAQPage from "./components/Section/Faq/Faq";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
@@ -81,6 +82,7 @@ const GeneralRoute: React.FC = () => (
       <Route path="gnm" element={<GNMPage />} />
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
+      <Route path="faq" element={<FAQPage />} />
     </Routes>
     <Footer />
   </React.Fragment>
