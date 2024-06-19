@@ -7,12 +7,11 @@ interface Credentials {
   password: string;
 }
 
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;  // Fallback to local URL if env var is not set
+
 export const Register = async (credentials: Credentials) => {
   try {
-    const response = await axios.post(
-      `http://localhost:3000/api/v1/register`,
-      credentials
-    );
+    const response = await axios.post(`${apiBaseUrl}/register`, credentials);
     console.log("Registration response:", response.data);
     return response.data;
   } catch (error: any) {
@@ -25,15 +24,9 @@ export const Register = async (credentials: Credentials) => {
   }
 };
 
-export const Login = async (credentials: {
-  email: string;
-  password: string;
-}) => {
+export const Login = async (credentials: { email: string; password: string }) => {
   try {
-    const response = await axios.post(
-      `http://localhost:3000/api/v1/login`,
-      credentials
-    );
+    const response = await axios.post(`${apiBaseUrl}/login`, credentials);
     console.log("Login response:", response.data);
     return response.data;
   } catch (error: any) {
