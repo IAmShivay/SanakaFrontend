@@ -5,6 +5,11 @@ import { restoreSession } from "./app/auth/authSlice";
 import { getSessionToken, getSessionUser } from "./utility/token";
 import LoadingComponent from "./components/Loading/Loading";
 import NotificationBar from "./components/Notification/Notification";
+import MBBSPage from "./components/Section/Programs/MBBS";
+import BPharmacyPage from "./components/Section/Programs/B_PHARMA";
+import BScNursingPage from "./components/Section/Programs/BSC_NURSING";
+import PGMDMSPage from "./components/Section/Programs/PGMD";
+import GNMPage from "./components/Section/Programs/GNM";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
@@ -67,6 +72,11 @@ const GeneralRoute: React.FC = () => (
     />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="mbbs" element={<MBBSPage />} />
+      <Route path="bpharma" element={<BPharmacyPage />} />
+      <Route path="bnursing" element={<BScNursingPage />} />
+      <Route path="pgmd" element={<PGMDMSPage />} />
+      <Route path="gnm" element={<GNMPage />} />
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
     </Routes>
