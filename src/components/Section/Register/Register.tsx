@@ -313,7 +313,7 @@ const RegisterPage: React.FC = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} md={6} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <img src="/images/consultancy.jpg" alt="Education Consultancy" style={{ maxWidth: "auto", height: "70vh" }} />
+          <img src="/images/consultancy.jpg" alt="Education Consultancy" style={{ maxWidth: "100%", height: "70vh" }} />
         </Grid>
       </Grid>
     </Container>
