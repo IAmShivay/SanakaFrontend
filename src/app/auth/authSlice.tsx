@@ -1,27 +1,37 @@
+
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { Login, Register } from "../../api/authApi";
-import { saveToken, clearToken, getToken } from "../../utility/token";
+import {
+  saveSession,
+  clearSession,
+  getSessionToken,
+  getSessionUser,
+} from "../../utility/token";
 import { RootState } from "../../store";
 
-interface AuthState {
-  user: string | "";
-  token: string | "";
+export interface AuthState {
+  user: any;
+  token:any;
   isLoading: boolean;
-  error: string | "";
+  error: string;
   isAuthenticated: boolean;
-  role: string | "";
+  role?:any;
 }
 
 const initialState: AuthState = {
-  user: "",
-  token: getToken(),
+  user: getSessionUser()?.user || null,
+  token: getSessionToken() || "",
   isLoading: false,
   error: "",
-  isAuthenticated: !!getToken(),
-  role: "",
+  isAuthenticated: !!getSessionToken(),
+  role: getSessionUser()?.user?.role || "",
 };
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
 
-interface Credentials {
+interface RegisterCredentials {
   firstName: string;
   lastName: string;
   email: string;
@@ -30,25 +40,37 @@ interface Credentials {
 
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async (credentials: { email: string; password: string }, thunkAPI) => {
+  async (credentials: LoginCredentials, thunkAPI) => {
     try {
       const data = await Login(credentials);
-      saveToken(data?.token);
+      const expiry = Date.now() + 3600 * 1000; // Example: token expiry set to 1 hour
+      saveSession(
+        data.token,
+        {
+          user: data.user,
+          token: data.token,
+          isLoading: false,
+          error: "",
+          isAuthenticated: true,
+          role: data.role,
+        },
+        expiry
+      );
       return data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
   }
 );
 
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (credentials: Credentials, thunkAPI) => {
+  async (credentials: RegisterCredentials, thunkAPI) => {
     try {
       const data = await Register(credentials);
       return data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
   }
 );
@@ -58,11 +80,17 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout(state) {
-      state.user = "";
+      state.user = null;
       state.token = "";
       state.isAuthenticated = false;
       state.role = "";
-      clearToken();
+      clearSession();
+    },
+    restoreSession(state, action: PayloadAction<AuthState>) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isAuthenticated = action.payload.isAuthenticated;
+      state.role = action.payload.role;
     },
   },
   extraReducers: (builder) => {
@@ -73,12 +101,15 @@ const authSlice = createSlice({
       })
       .addCase(
         loginUser.fulfilled,
-        (state, action: PayloadAction<{ user: any; token: string; role: string }>) => {
+        (
+          state,
+          action: PayloadAction<{ user: string; token: string; role: string }>
+        ) => {
           state.isLoading = false;
           state.isAuthenticated = true;
           state.user = action.payload.user;
           state.token = action.payload.token;
-          state.role = action.payload.user.role; // Assuming role is part of the response
+          state.role = action.payload.role;
         }
       )
       .addCase(loginUser.rejected, (state, action: PayloadAction<any>) => {
@@ -91,12 +122,15 @@ const authSlice = createSlice({
       })
       .addCase(
         registerUser.fulfilled,
-        (state, action: PayloadAction<{ user: any; token: string; role: string }>) => {
+        (
+          state,
+          action: PayloadAction<{ user: string; token: string; role: string }>
+        ) => {
           state.isLoading = false;
           state.isAuthenticated = true;
           state.user = action.payload.user;
           state.token = action.payload.token;
-          state.role = action.payload.user.role; // Assuming role is part of the response
+          state.role = action.payload.role;
         }
       )
       .addCase(registerUser.rejected, (state, action: PayloadAction<any>) => {
@@ -106,6 +140,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, restoreSession } = authSlice.actions;
 export const selectAuth = (state: RootState) => state.auth;
 export default authSlice.reducer;
