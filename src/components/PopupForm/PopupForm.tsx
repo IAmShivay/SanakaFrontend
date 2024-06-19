@@ -1,24 +1,35 @@
 import React, { useState } from "react";
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from "@mui/material";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Button,
+} from "@mui/material";
+import { leadRegister } from "../../app/leadSlice";
+import { AppDispatch } from "../../store";
+import { useDispatch } from "react-redux";
 
 interface TabWithPopupProps {
   isOpen: boolean;
   onSubmit: (data: FormData) => void;
   formFilled: boolean;
-  onFormChange: (data: { name: string; email: string; }) => void;
+  onFormChange: (data: { name: string; email: string }) => void;
 }
 
 interface FormData {
   name: string;
   email: string;
-  PhoneNumber: string;
+  phoneNumber: string;
 }
 
-const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit}) => {
+const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit }) => {
+  const dispatch = useDispatch<AppDispatch>();
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    PhoneNumber: ''
+    name: "",
+    email: "",
+    phoneNumber: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,10 +40,19 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit}) => {
     });
   };
 
-  const handleSubmit = () => {
-      onSubmit(formData);
-      console.log(formData)
-   
+  const handleSubmit = async () => {
+    onSubmit(formData);
+    try {
+      dispatch(leadRegister(formData));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setFormData({
+        name: "",
+        email: "",
+        phoneNumber: "",
+      });
+    }
   };
 
   return (
@@ -62,12 +82,12 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit}) => {
         />
         <TextField
           margin="dense"
-          name="PhoneNumber"
+          name="phoneNumber"
           label="Mobile Number"
           type="number"
           fullWidth
           variant="standard"
-          value={formData.PhoneNumber}
+          value={formData.phoneNumber}
           onChange={handleChange}
         />
       </DialogContent>
@@ -79,4 +99,3 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit}) => {
 };
 
 export default TabWithPopup;
-

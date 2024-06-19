@@ -45,7 +45,6 @@ const GeneralRoute: React.FC = () => (
       message="This is a continuous notification message!"
       link="www.google.com"
     />
-
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="contactUs" element={<ContactUs />} />

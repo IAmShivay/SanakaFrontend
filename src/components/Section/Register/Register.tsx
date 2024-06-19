@@ -144,7 +144,7 @@ const RegisterPage: React.FC = () => {
             style={{ marginTop: "16px" }}
           >
             Already have an account?{" "}
-            <Link component={RouterLink} to="/login">
+            <Link component={RouterLink} to="/user/login">
               Sign in
             </Link>
           </Typography>

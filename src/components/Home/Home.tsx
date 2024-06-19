@@ -14,7 +14,7 @@ interface Product {
 interface FormData {
   name: string;
   email: string;
-  PhoneNumber: string;
+  phoneNumber: string;
 }
 
 const products: Product[] = [
@@ -55,7 +55,7 @@ const CarouselComponent: React.FC = () => {
     const hasContent =
       formData.name.trim() !== "" &&
       formData.email.trim() !== "" &&
-      formData.PhoneNumber.trim() !== "";
+      formData.phoneNumber.trim() !== "";
 
     if (hasContent) {
       setFormFilled(true);
