@@ -37,7 +37,7 @@ const AboutUs: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <img
-            src="/images/Loader.svg"
+            src="/images/Loader.png"
             alt="Company Logo"
             style={{ width: "150px", marginBottom: "20px" }}
           />
