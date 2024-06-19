@@ -24,34 +24,57 @@ interface FormData {
   phoneNumber: string;
 }
 
-const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit }) => {
+const TabWithPopup: React.FC<TabWithPopupProps> = ({
+  isOpen,
+  onSubmit,
+  onFormChange,
+}) => {
   const dispatch = useDispatch<AppDispatch>();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phoneNumber: "",
   });
+  const [phoneError, setPhoneError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    // Update form data state
     setFormData({
       ...formData,
       [name]: value,
     });
+
+    // Handle phone number validation
+    if (name === "phoneNumber") {
+      const isValidPhoneNumber = /^\d{10}$/.test(value);
+      setPhoneError(isValidPhoneNumber ? null : "Phone number must be 10 digits.");
+    }
+
+    // Notify parent component of form changes
+    onFormChange({
+      name: formData.name,
+      email: formData.email,
+    });
   };
 
   const handleSubmit = async () => {
-    onSubmit(formData);
-    try {
-      dispatch(leadRegister(formData));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setFormData({
-        name: "",
-        email: "",
-        phoneNumber: "",
-      });
+    if (!phoneError && formData.name && formData.email && formData.phoneNumber) {
+      onSubmit(formData);
+      try {
+        dispatch(leadRegister(formData));
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+        });
+      }
+    } else {
+      alert("Please fill out the form correctly.");
     }
   };
 
@@ -84,11 +107,13 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({ isOpen, onSubmit }) => {
           margin="dense"
           name="phoneNumber"
           label="Mobile Number"
-          type="number"
+          type="text"
           fullWidth
           variant="standard"
           value={formData.phoneNumber}
           onChange={handleChange}
+          error={!!phoneError}
+          helperText={phoneError}
         />
       </DialogContent>
       <DialogActions>

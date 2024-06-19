@@ -2,28 +2,28 @@ import { Card, CardContent, CardMedia, Typography, CardActionArea, Grid, Box } f
 
 const cards = [
   {
-    title: 'Lizard',
-    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica.',
-    image: '/static/images/cards/contemplative-reptile.jpg',
-    alt: 'green iguana'
+    title: 'MCI APPROVED',
+    description: 'Board of Governors in Supersession of Medical Council of India approved 150 MBBS Seats for Academic Session 2021-22.',
+    image: '/images/MCI LOGO.jpg', // Replace with a real image URL
+    alt: 'MCI approved'
   },
   {
-    title: 'Turtle',
-    description: 'Turtles are reptiles with hard shells that protect them from predators. They live in various environments, from deserts to wetlands.',
-    image: '/static/images/cards/turtle.jpg',
-    alt: 'turtle'
+    title: 'CLAUSE B.1.11',
+    description: 'Shri Ramkrishna Institute of Medical Sciences, situated in Durgapur, boasts a sprawling campus that spans over 50 acres.',
+    image: '/images/CLAUSE.jpeg', // Replace with a real image URL
+    alt: 'Campus'
   },
   {
-    title: 'Snake',
-    description: 'Snakes are elongated, legless, carnivorous reptiles of the suborder Serpentes. They are found on every continent except Antarctica.',
-    image: '/static/images/cards/snake.jpg',
-    alt: 'snake'
+    title: 'COURSES',
+    description: 'At Sanaka Education, we offer a diverse range of courses in medical sciences and engineering, including esteemed programs such as MBBS.',
+    image: '/images/courses.jpeg', // Replace with a real image URL
+    alt: 'Courses'
   },
   {
-    title: 'Crocodile',
-    description: 'Crocodiles are large aquatic reptiles that live throughout the tropics in Africa, Asia, the Americas, and Australia.',
-    image: '/static/images/cards/crocodile.jpg',
-    alt: 'crocodile'
+    title: 'FACULTY',
+    description: 'Our institution is distinguished by its top-notch faculty, comprised of experts and industry leaders.',
+    image: '/images/HeroBanner.jpg', // Replace with a real image URL
+    alt: 'Faculty'
   }
 ];
 
