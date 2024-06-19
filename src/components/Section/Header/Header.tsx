@@ -104,6 +104,9 @@ const Header: React.FC = () => {
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             transformOrigin={{ vertical: "top", horizontal: "right" }}
           >
+            <MenuItem onClick={() => handleLinkClick("/")}>
+              <Typography>Home</Typography>
+            </MenuItem>
             <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
               <Typography>About Us</Typography>
             </MenuItem>
@@ -137,6 +140,9 @@ const Header: React.FC = () => {
         </>
       ) : (
         <Box sx={{ display: "flex", flexGrow: 1, gap: 2, height: "5vh" }}>
+          <MenuItem onClick={() => handleLinkClick("/")}>
+            <Typography variant="body1" color="inherit">Home</Typography>
+          </MenuItem>
           <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
             <Typography variant="body1" color="inherit">About Us</Typography>
           </MenuItem>

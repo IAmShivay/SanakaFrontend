@@ -1,4 +1,3 @@
-
 // import React, { useState, ChangeEvent } from "react";
 // import {
 //   Button,
@@ -156,7 +155,6 @@
 
 // export default RegisterPage;
 
-
 import React, { useState, ChangeEvent } from "react";
 import {
   Button,
@@ -312,8 +310,21 @@ const RegisterPage: React.FC = () => {
             </Box>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <img src="/images/consultancy.jpg" alt="Education Consultancy" style={{ maxWidth: "100%", height: "70vh" }} />
+        <Grid
+          item
+          xs={12}
+          md={6}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src="/images/consultancy.jpg"
+            alt="Education Consultancy"
+            style={{ maxWidth: "100%", height: "70vh" }}
+          />
         </Grid>
       </Grid>
     </Container>

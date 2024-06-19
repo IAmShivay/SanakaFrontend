@@ -10,6 +10,7 @@ import BPharmacyPage from "./components/Section/Programs/B_PHARMA";
 import BScNursingPage from "./components/Section/Programs/BSC_NURSING";
 import PGMDMSPage from "./components/Section/Programs/PGMD";
 import GNMPage from "./components/Section/Programs/GNM";
+import ProgramsPage from "./components/Section/Programs";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
@@ -73,9 +74,10 @@ const GeneralRoute: React.FC = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="mbbs" element={<MBBSPage />} />
-      <Route path="bpharma" element={<BPharmacyPage />} />
-      <Route path="bnursing" element={<BScNursingPage />} />
-      <Route path="pgmd" element={<PGMDMSPage />} />
+      <Route path="bpharmacy" element={<BPharmacyPage />} />
+      <Route path="bscnursing" element={<BScNursingPage />} />
+      <Route path="pgmdms" element={<PGMDMSPage />} />
+      <Route path="programs" element={<ProgramsPage />} />
       <Route path="gnm" element={<GNMPage />} />
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
