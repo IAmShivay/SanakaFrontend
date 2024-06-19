@@ -1,5 +1,4 @@
 // Footer.js
-import React from "react";
 import { Typography, Grid, TextField, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
@@ -21,7 +20,7 @@ const Footer = () => {
         <Grid item xs={12} md={4} style={{ marginBottom: "20px" }}>
           <Grid container direction="column" alignItems="flex-start">
             <img
-              src="images/Loader.svg"
+              src="images/Loader.png"
               alt="Logo"
               style={{ height: "50px", marginBottom: "10px" }}
             />
