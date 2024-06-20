@@ -17,8 +17,8 @@ import Logo from "../../Loader.svg";
 import CustomLink from "../CustomLink/Links";
 import TabWithPopup from "../../PopupForm/PopupForm";
 import { FormData } from "../../Home/Home";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { motion } from 'framer-motion';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { motion } from "framer-motion";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,7 +88,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", p: 2 }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        p: 2,
+      }}
+    >
       <Box>
         <img src={Logo} alt="Logo" style={{ height: 40 }} />
       </Box>
@@ -114,7 +121,8 @@ const Header: React.FC = () => {
               ref={academicsAnchorRef}
               onClick={handleAcademicsMenuToggle}
             >
-             <ArrowDropDownIcon/><Typography>Academics</Typography>
+              <ArrowDropDownIcon />
+              <Typography>Academics</Typography>
             </MenuItem>
             <Menu
               open={academicsMenuOpen}
@@ -137,17 +145,47 @@ const Header: React.FC = () => {
               <Typography>Administration</Typography>
             </MenuItem>
           </Menu>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ position: "fixed", bottom: 20, right: 20, zIndex: 10 }}
+          >
+            <IconButton
+              href="https://wa.me/8811048111"
+              target="_blank"
+              sx={{
+                backgroundColor: "#25D366",
+                color: "white",
+                borderRadius: "50%",
+                width: 64,
+                height: 64,
+              }}
+            >
+              <WhatsAppIcon sx={{ fontSize: 40 }} />
+            </IconButton>
+          </motion.div>
         </>
       ) : (
         <Box sx={{ display: "flex", flexGrow: 1, gap: 2, height: "5vh" }}>
           <MenuItem onClick={() => handleLinkClick("/")}>
-            <Typography variant="body1" color="inherit">Home</Typography>
+            <Typography variant="body1" color="inherit">
+              Home
+            </Typography>
           </MenuItem>
           <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
-            <Typography variant="body1" color="inherit">About Us</Typography>
+            <Typography variant="body1" color="inherit">
+              About Us
+            </Typography>
           </MenuItem>
-          <MenuItem ref={academicsAnchorRef} onClick={handleAcademicsMenuToggle}>
-            <ArrowDropDownIcon/><Typography variant="body1" color="inherit">Academics</Typography>
+          <MenuItem
+            ref={academicsAnchorRef}
+            onClick={handleAcademicsMenuToggle}
+          >
+            <ArrowDropDownIcon />
+            <Typography variant="body1" color="inherit">
+              Academics
+            </Typography>
           </MenuItem>
           <Menu
             open={academicsMenuOpen}
@@ -157,21 +195,40 @@ const Header: React.FC = () => {
             transformOrigin={{ vertical: "top", horizontal: "right" }}
           >
             <MenuItem onClick={() => handleLinkClick("/programs")}>
-              <Typography variant="body1" color="inherit">Programs</Typography>
+              <Typography variant="body1" color="inherit">
+                Programs
+              </Typography>
             </MenuItem>
             <MenuItem onClick={() => handleLinkClick("/research")}>
-              <Typography variant="body1" color="inherit">Research</Typography>
+              <Typography variant="body1" color="inherit">
+                Research
+              </Typography>
             </MenuItem>
             <MenuItem onClick={() => handleLinkClick("/faculty")}>
-              <Typography variant="body1" color="inherit">Faculty</Typography>
+              <Typography variant="body1" color="inherit">
+                Faculty
+              </Typography>
             </MenuItem>
           </Menu>
           <MenuItem onClick={() => handleLinkClick("/contactUs")}>
-            <Typography variant="body1" color="inherit">Administration</Typography>
+            <Typography variant="body1" color="inherit">
+              Administration
+            </Typography>
           </MenuItem>
-          <Box sx={{ marginLeft: "auto", display: "flex", gap: 1, alignItems: "center" }}>
+          <Box
+            sx={{
+              marginLeft: "auto",
+              display: "flex",
+              gap: 1,
+              alignItems: "center",
+            }}
+          >
             <CustomLink href="/contactUs">
-              <Button variant="outlined" color="inherit" sx={{ borderRadius: 0 }}>
+              <Button
+                variant="outlined"
+                color="inherit"
+                sx={{ borderRadius: 0 }}
+              >
                 Contact
               </Button>
             </CustomLink>
@@ -180,30 +237,54 @@ const Header: React.FC = () => {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 10 }}
+                style={{ position: "fixed", bottom: 20, right: 20, zIndex: 10 }}
               >
                 <IconButton
                   href="https://wa.me/8811048111"
                   target="_blank"
-                  sx={{ backgroundColor: "#25D366", color: "white", borderRadius: "50%", width: 64, height: 64 }}
+                  sx={{
+                    backgroundColor: "#25D366",
+                    color: "white",
+                    borderRadius: "50%",
+                    width: 64,
+                    height: 64,
+                  }}
                 >
                   <WhatsAppIcon sx={{ fontSize: 40 }} />
                 </IconButton>
               </motion.div>
-              <Button variant="outlined" startIcon={<PhoneIcon />} href="tel:+08017508002">
+              <Button
+                variant="outlined"
+                startIcon={<PhoneIcon />}
+                href="tel:+08017508002"
+              >
                 IVR 1
               </Button>
-              <Button variant="outlined" startIcon={<PhoneIcon />} href="tel:+8918857722">
+              <Button
+                variant="outlined"
+                startIcon={<PhoneIcon />}
+                href="tel:+8918857722"
+              >
                 IVR 2
               </Button>
             </Box>
             <CustomLink href="/user/register">
-              <Button variant="contained" sx={{ backgroundColor: "black", borderRadius: 0 }}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "black", borderRadius: 0 }}
+              >
                 Sign Up
               </Button>
             </CustomLink>
             <CustomLink href="/prospectus.pdf">
-              <Button variant="outlined" sx={{ marginLeft: 2, backgroundColor: "white", borderRadius: 0 }}>
+              <Button
+                variant="outlined"
+                sx={{
+                  marginLeft: 2,
+                  backgroundColor: "white",
+                  borderRadius: 0,
+                }}
+              >
                 Download Prospectus
               </Button>
             </CustomLink>
