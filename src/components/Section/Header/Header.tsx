@@ -6,6 +6,7 @@ import {
   IconButton,
   Typography,
   Button,
+  Stack
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -146,25 +147,56 @@ const Header: React.FC = () => {
             </MenuItem>
           </Menu>
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            style={{ position: "fixed", bottom: 20, right: 20, zIndex: 10 }}
-          >
-            <IconButton
-              href="https://wa.me/8811048111"
-              target="_blank"
-              sx={{
-                backgroundColor: "#25D366",
-                color: "white",
-                borderRadius: "50%",
-                width: 64,
-                height: 64,
-              }}
-            >
-              <WhatsAppIcon sx={{ fontSize: 40 }} />
-            </IconButton>
-          </motion.div>
+  initial={{ opacity: 0, x: 100 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+  style={{ position: "fixed", bottom: 20, right: 20, zIndex: 10 }}
+>
+  <Stack direction="column" spacing={2} alignItems="center">
+    <IconButton
+      href="https://wa.me/8811048111"
+      target="_blank"
+      sx={{
+        backgroundColor: "#25D366",
+        color: "white",
+        borderRadius: "50%",
+        width: 64,
+        height: 64,
+      }}
+    >
+      <WhatsAppIcon sx={{ fontSize: 40 }} />
+    </IconButton>
+    <Button
+      variant="outlined"
+      startIcon={<PhoneIcon />}
+      href="tel:+08017508002"
+      sx={{
+        color: "white", // Text color
+        backgroundColor: "#28a745", // Background color for call button
+        '&:hover': {
+          backgroundColor: "#218838", // Darker background on hover
+        }
+      }}
+    >
+      IVR 1
+    </Button>
+    <Button
+      variant="outlined"
+      startIcon={<PhoneIcon />}
+      href="tel:+8918857722"
+      sx={{
+        color: "white", // Text color
+        backgroundColor: "#28a745", // Background color for call button
+        '&:hover': {
+          backgroundColor: "#218838", // Darker background on hover
+        }
+      }}
+    >
+      IVR 2
+    </Button>
+  </Stack>
+</motion.div>
+
         </>
       ) : (
         <Box sx={{ display: "flex", flexGrow: 1, gap: 2, height: "5vh" }}>
