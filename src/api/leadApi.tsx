@@ -12,7 +12,6 @@ export const Leads = async (credentials: Credentials) => {
         `http://localhost:3000/api/v1/form`,
         credentials
       );
-      console.log("Form Data response:", response.data);
       return response.data;
     } catch (error: any) {
       if (error.response) {
