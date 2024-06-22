@@ -171,7 +171,7 @@ const Header: React.FC = () => {
               <Button
                 variant="outlined"
                 startIcon={<PhoneIcon />}
-                href="tel:+918420461369"
+                href="tel:+918017508002"
                 sx={{
                   color: "white", // Text color
                   backgroundColor: "#28a745", // Background color for call button
@@ -185,7 +185,7 @@ const Header: React.FC = () => {
               <Button
                 variant="outlined"
                 startIcon={<PhoneIcon />}
-                href="tel:+918811048111"
+                href="tel:+917477798949"
                 sx={{
                   color: "white", // Text color
                   backgroundColor: "#28a745", // Background color for call button
