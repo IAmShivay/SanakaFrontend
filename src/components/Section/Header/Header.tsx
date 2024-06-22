@@ -6,7 +6,7 @@ import {
   IconButton,
   Typography,
   Button,
-  Stack
+  Stack,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -95,6 +95,8 @@ const Header: React.FC = () => {
         justifyContent: "space-between",
         alignItems: "center",
         p: 2,
+        width: { xs: "100%", md: "80vh", lg: "100%" },
+
       }}
     >
       <Box>
@@ -147,56 +149,55 @@ const Header: React.FC = () => {
             </MenuItem>
           </Menu>
           <motion.div
-  initial={{ opacity: 0, x: 100 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.5 }}
-  style={{ position: "fixed", bottom: 20, right: 20, zIndex: 10 }}
->
-  <Stack direction="column" spacing={2} alignItems="center">
-    <IconButton
-      href="https://wa.me/8811048111"
-      target="_blank"
-      sx={{
-        backgroundColor: "#25D366",
-        color: "white",
-        borderRadius: "50%",
-        width: 64,
-        height: 64,
-      }}
-    >
-      <WhatsAppIcon sx={{ fontSize: 40 }} />
-    </IconButton>
-    <Button
-      variant="outlined"
-      startIcon={<PhoneIcon />}
-      href="tel:+08017508002"
-      sx={{
-        color: "white", // Text color
-        backgroundColor: "#28a745", // Background color for call button
-        '&:hover': {
-          backgroundColor: "#218838", // Darker background on hover
-        }
-      }}
-    >
-      IVR 1
-    </Button>
-    <Button
-      variant="outlined"
-      startIcon={<PhoneIcon />}
-      href="tel:+8918857722"
-      sx={{
-        color: "white", // Text color
-        backgroundColor: "#28a745", // Background color for call button
-        '&:hover': {
-          backgroundColor: "#218838", // Darker background on hover
-        }
-      }}
-    >
-      IVR 2
-    </Button>
-  </Stack>
-</motion.div>
-
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ position: "fixed", bottom: 40, right: 40, zIndex: 20 }}
+          >
+            <Stack direction="column" spacing={2} alignItems="center">
+              <IconButton
+                href="https://wa.me/918420461369"
+                target="_blank"
+                sx={{
+                  backgroundColor: "#25D366",
+                  color: "white",
+                  borderRadius: "50%",
+                  width: 64,
+                  height: 64,
+                }}
+              >
+                <WhatsAppIcon sx={{ fontSize: 40 }} />
+              </IconButton>
+              <Button
+                variant="outlined"
+                startIcon={<PhoneIcon />}
+                href="tel:+918420461369"
+                sx={{
+                  color: "white", // Text color
+                  backgroundColor: "#28a745", // Background color for call button
+                  "&:hover": {
+                    backgroundColor: "#218838", // Darker background on hover
+                  },
+                }}
+              >
+                IVR 1
+              </Button>
+              <Button
+                variant="outlined"
+                startIcon={<PhoneIcon />}
+                href="tel:+918811048111"
+                sx={{
+                  color: "white", // Text color
+                  backgroundColor: "#28a745", // Background color for call button
+                  "&:hover": {
+                    backgroundColor: "#218838", // Darker background on hover
+                  },
+                }}
+              >
+                IVR 2
+              </Button>
+            </Stack>
+          </motion.div>
         </>
       ) : (
         <Box sx={{ display: "flex", flexGrow: 1, gap: 2, height: "5vh" }}>

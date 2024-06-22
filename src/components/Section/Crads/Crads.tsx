@@ -26,7 +26,7 @@ const cards = [
   {
     title: "COURSES",
     description:
-      "At Sanaka Education, we offer a diverse range of courses in medical sciences and engineering, including esteemed programs such as MBBS.",
+      "We offer a diverse range of courses in medical sciences and engineering, including esteemed programs such as MBBS.",
     image: "/images/courses.jpeg", // Replace with a real image URL
     alt: "Courses",
   },
@@ -41,7 +41,7 @@ const cards = [
 
 export default function ResponsiveCardGrid() {
   return (
-    <Box sx={{ padding: 2, width: { xs: "auto", md: "80vh", lg: "100%" }
+    <Box sx={{ padding: 5, width: { xs: "80%", md: "80vh", lg: "95%" }
      }}>
       <Grid container spacing={3}>
         {cards.map((card, index) => (

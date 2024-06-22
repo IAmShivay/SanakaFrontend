@@ -1,3 +1,4 @@
+import React from 'react';
 import { Typography, Grid, TextField, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
@@ -9,21 +10,20 @@ const Footer = () => {
   const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
   const isXsUp = useMediaQuery(theme.breakpoints.up('xs'));
 
-
   const getWidth = () => {
     if (isLgUp) return '100%';
-    if (isMdUp) return '100vh';
-    if (isXsUp) return '100%';
-
-    return '60vh';
+    if (isMdUp) return '78vh';
+    if (isXsUp) return '92%';
+    return '100%'; // Fallback for smaller devices
   };
-  const getheight = () => {
+
+  const getHeight = () => {
     if (isLgUp) return '100%';
-    if (isMdUp) return '100vh';
+    if (isMdUp) return '100%';
     if (isXsUp) return '100%';
-
-    return '60vh';
+    return '100vh'; // Fallback for smaller devices
   };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ const Footer = () => {
         padding: "30px 20px",
         marginTop: "20px",
         width: getWidth(),
-        height:getheight(), // Set the width dynamically
+        height: getHeight(),
       }}
     >
       <Grid container spacing={4}>
@@ -72,10 +72,8 @@ const Footer = () => {
                   variant="outlined"
                   size="small"
                   fullWidth
-                  style={{ width: "100%", height: "100%" }}
-                  inputProps={{
-                    style: { fontSize: "0.875rem", padding: "5px" },
-                  }} // Adjust font size and padding
+                  style={{ width: "100%", marginTop: "10px" }}
+                  inputProps={{ style: { fontSize: "0.875rem", padding: "5px" } }}
                 />
               </Grid>
               <Grid
@@ -192,10 +190,12 @@ const Footer = () => {
         </Grid>
       </Grid>
       <hr />
-      <Grid item xs={12} md={4} style={{ textAlign: "center" }}>
-        <Typography variant="body2" gutterBottom>
-          © 2024 Durgapur Education Foundation. All rights reserved.
-        </Typography>
+      <Grid container style={{ marginTop: "20px", textAlign: "center" }}>
+        <Grid item xs={12} md={12}>
+          <Typography variant="body2" gutterBottom>
+            © 2024 Durgapur Education Foundation. All rights reserved.
+          </Typography>
+        </Grid>
       </Grid>
     </motion.div>
   );
