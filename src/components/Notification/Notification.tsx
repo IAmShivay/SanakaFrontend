@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { Box, Typography, Link } from "@mui/material";
 import { keyframes } from "@emotion/react";
-
+import FiberNewIcon from '@mui/icons-material/FiberNew';
 const scroll = keyframes`
   0% { transform: translateX(100%); } // Start from the right
   100% { transform: translateX(-100%); } // End at the left
@@ -64,9 +64,26 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ message, link, durati
         }}
       >
         <Link href={link} sx={{ color: "inherit", textDecoration: "none" }}>
-          <Typography variant="body1" component="span">
-            {message}
-          </Typography>
+        <Box display="flex" alignItems="center">
+      <Box
+        style={{
+          backgroundColor: 'red',
+          border: '2px solid yellow',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 32,
+          height: 32,
+          marginRight: 4,
+        }}
+      >
+        <FiberNewIcon style={{ color: 'white' }} />
+      </Box>
+      <Typography variant="body1" component="span">
+        {message}
+      </Typography>
+    </Box>
         </Link>
       </Box>
     </Box>

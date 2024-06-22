@@ -69,8 +69,9 @@ const GeneralRoute: React.FC = () => (
   <React.Fragment>
     <Header />
     <NotificationBar
-      message="This is a continuous notification message!"
-      link="www.google.com"
+      message="Applications for starting of New PG Medical courses and Increase of seats in PG Medical 
+courses for Academic Year: 2024-25!"
+      link="https://www.nmc.org.in/MCIRest/open/getDocument?path=/Documents/Public/Portal/LatestNews/Colleges%20concerned-%20Regarding-2.pdf"
     />
     <Routes>
       <Route path="/" element={<Home />} />
