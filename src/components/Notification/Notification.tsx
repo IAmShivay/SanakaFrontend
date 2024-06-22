@@ -35,7 +35,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ message, link, durati
   return (
     <Box
       sx={{
-        width: "100%",
+        width: { xs: "100%", md: "80vh", lg: "100%" },
         overflow: "hidden",
         backgroundColor: "#0035b3",
         color: "white",
@@ -43,7 +43,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ message, link, durati
         position: "relative",
         top: 0,
         zIndex: 1000,
-        height: "6vh",
+        height: { xs: "70%", md: "80%", lg: "90%" },
         marginBottom:'10px',
         borderRadius:'5px'
       }}

@@ -1,9 +1,29 @@
-// Footer.js
 import { Typography, Grid, TextField, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import { useTheme, useMediaQuery } from "@mui/material";
 
 const Footer = () => {
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
+  const isXsUp = useMediaQuery(theme.breakpoints.up('xs'));
+
+
+  const getWidth = () => {
+    if (isLgUp) return '100%';
+    if (isMdUp) return '100vh';
+    if (isXsUp) return '100%';
+
+    return '60vh';
+  };
+  const getheight = () => {
+    if (isLgUp) return '100%';
+    if (isMdUp) return '100vh';
+    if (isXsUp) return '100%';
+
+    return '60vh';
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -14,6 +34,8 @@ const Footer = () => {
         color: "#000",
         padding: "30px 20px",
         marginTop: "20px",
+        width: getWidth(),
+        height:getheight(), // Set the width dynamically
       }}
     >
       <Grid container spacing={4}>
