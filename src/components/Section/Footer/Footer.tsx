@@ -130,7 +130,7 @@ const Footer = () => {
             Email: durgapurfoundation.23@gmail.com
           </Typography>
           <Typography variant="body2" gutterBottom>
-            Phone: 8017508002
+            Phone: 84204 61369
           </Typography>
           <Typography variant="body2" gutterBottom>
             Address: Malandighi, Kanksha, Durgapur-713212, India
