@@ -20,3 +20,18 @@ export const Leads = async (credentials: Credentials) => {
     return error;
   }
 };
+
+export const LeadsGet = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/allleads`);
+    console.log(response)
+    return response.data;
+  } catch (error: any) {
+    if (error.response) {
+      const errorMessage = error.response.data.message;
+      console.log(errorMessage);
+      throw errorMessage;
+    }
+    return error;
+  }
+};

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { Leads } from "../api/leadApi";
+import { Leads, LeadsGet } from "../api/leadApi";
+
 
 interface Credentials {
   name: string;
@@ -10,12 +11,14 @@ interface Credentials {
 
 interface AuthState {
   user: Credentials | null;
+  leads: Credentials[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: AuthState = {
   user: null,
+  leads: [],
   loading: false,
   error: null,
 };
@@ -25,6 +28,18 @@ export const leadRegister = createAsyncThunk(
   async (credentials: Credentials, thunkAPI) => {
     try {
       const data = await Leads(credentials);
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const leadsGets = createAsyncThunk(
+  "auth/leadsGets",
+  async (_, thunkAPI) => {
+    try {
+      const data = await LeadsGet();
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -49,14 +64,21 @@ const authSlice = createSlice({
       .addCase(leadRegister.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(leadsGets.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(leadsGets.fulfilled, (state, action: PayloadAction<Credentials[]>) => {
+        state.loading = false;
+        state.leads = action.payload; // Assuming LeadsGet() returns an array of Lead objects
+      })
+      .addCase(leadsGets.rejected, (state, action: PayloadAction<any>) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
 export default authSlice.reducer;
-
-// Optionally, export the actions if you have any
-// export const {} = authSlice.actions;
-
-// Selector to get the auth state from the store
 export const selectAuth = (state: RootState) => state.auth;
