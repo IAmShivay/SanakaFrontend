@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { leadRegister } from "../../app/leadSlice";
+import { leadRegister } from "../../app/leads/leadSlice";
 import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 

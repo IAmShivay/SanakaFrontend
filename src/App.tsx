@@ -104,15 +104,13 @@ const PublicRoute: React.FC = () => (
 const PrivateRoute: React.FC = () => {
   const token = getSessionToken();
   const user = getSessionUser();
-  // console.log("PrivateRoute check - token:", token, "user:", user);
-  // console.log(user?.isAuthenticated);
   if (token && user && user?.user.role === "admin") {
     return (
       <React.Fragment>
-      <Routes>
-        <Route path="dashboard" element={<Main />} />
-        <Route path="leads" element={<Lead />} />
-      </Routes>
+        <Routes>
+          <Route path="/dashboard" element={<Main />} />
+          <Route path="/leads" element={<Lead />} />
+        </Routes>
       </React.Fragment>
     );
   } else {

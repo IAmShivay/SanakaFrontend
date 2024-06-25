@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../src/app/auth/authSlice";
-
+import leadReducer from "../src/app/leads/leadSlice"
 const store = configureStore({
   reducer: {
     auth: authReducer,
+    leads:leadReducer
   },
 });
 

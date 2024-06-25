@@ -1,22 +1,23 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../store";
-import { Leads, LeadsGet } from "../api/leadApi";
+import { RootState } from "../../store";
+import { Leads, LeadsGet } from "../../api/leadApi";
 
 
 interface Credentials {
   name: string;
   email: string;
   phoneNumber: string;
+  leads:[]
 }
 
-interface AuthState {
+interface leadState {
   user: Credentials | null;
   leads: Credentials[];
   loading: boolean;
   error: string | null;
 }
 
-const initialState: AuthState = {
+const initialState: leadState = {
   user: null,
   leads: [],
   loading: false,
@@ -47,7 +48,7 @@ export const leadsGets = createAsyncThunk(
   }
 );
 
-const authSlice = createSlice({
+const leadSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {},
@@ -69,9 +70,9 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(leadsGets.fulfilled, (state, action: PayloadAction<Credentials[]>) => {
+      .addCase(leadsGets.fulfilled, (state, action: PayloadAction<any>) => {
         state.loading = false;
-        state.leads = action.payload; // Assuming LeadsGet() returns an array of Lead objects
+        state.leads = action.payload.leads; // Assuming LeadsGet() returns an array of Lead objects
       })
       .addCase(leadsGets.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
@@ -80,5 +81,5 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
-export const selectAuth = (state: RootState) => state.auth;
+export const selectLeads = (state: RootState) => state.leads;
+export default leadSlice.reducer;
