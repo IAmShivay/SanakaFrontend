@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-
+// import { LeadsGet } from '../../api/leadApi';
 interface Lead {
   name: string;
   phone: string;
