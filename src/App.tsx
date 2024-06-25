@@ -12,6 +12,7 @@ import PGMDMSPage from "./components/Section/Programs/PGMD";
 import GNMPage from "./components/Section/Programs/GNM";
 import ProgramsPage from "./components/Section/Programs";
 import FAQPage from "./components/Section/Faq/Faq";
+import Lead from "./components/Leads/Lead";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
@@ -103,13 +104,16 @@ const PublicRoute: React.FC = () => (
 const PrivateRoute: React.FC = () => {
   const token = getSessionToken();
   const user = getSessionUser();
-  console.log("PrivateRoute check - token:", token, "user:", user);
-  console.log(user?.isAuthenticated);
+  // console.log("PrivateRoute check - token:", token, "user:", user);
+  // console.log(user?.isAuthenticated);
   if (token && user && user?.user.role === "admin") {
     return (
+      <React.Fragment>
       <Routes>
         <Route path="dashboard" element={<Main />} />
+        <Route path="leads" element={<Lead />} />
       </Routes>
+      </React.Fragment>
     );
   } else {
     console.log("Access denied - Not authenticated or not admin");
