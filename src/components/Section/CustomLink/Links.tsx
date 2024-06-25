@@ -15,7 +15,6 @@ const CustomLink: React.FC<CustomLinkProps> = ({ children, ...rest }) => {
         fontWeight: 500,
         cursor: "pointer",
         borderRadius: "4px",
-        padding: "8px 16px",
         display: "inline-block",
         backgroundColor: "transparent",
         border: "2px solid transparent",

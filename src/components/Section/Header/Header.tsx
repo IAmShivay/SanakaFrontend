@@ -95,7 +95,7 @@ const Header: React.FC = () => {
         justifyContent: "space-between",
         alignItems: "center",
         p: 2,
-        width: { xs: "100%", md: "80vh", lg: "100%" },
+        width: { md: "80vh", lg: "90%" },
 
       }}
     >

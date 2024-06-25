@@ -10,7 +10,7 @@ const Footer = () => {
   const isXsUp = useMediaQuery(theme.breakpoints.up('xs'));
 
   const getWidth = () => {
-    if (isLgUp) return '100%';
+    if (isLgUp) return '98%';
     if (isMdUp) return '78vh';
     if (isXsUp) return '92%';
     return '100%'; // Fallback for smaller devices

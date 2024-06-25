@@ -7,7 +7,7 @@ interface Credentials {
   name: string;
   email: string;
   phoneNumber: string;
-  leads:[]
+  leads?:[]
 }
 
 interface leadState {
