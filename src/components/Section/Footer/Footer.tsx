@@ -12,7 +12,7 @@ const Footer = () => {
   const getWidth = () => {
     if (isLgUp) return '98%';
     if (isMdUp) return '78vh';
-    if (isXsUp) return '92%';
+    if (isXsUp) return '95%';
     return '100%'; // Fallback for smaller devices
   };
 
