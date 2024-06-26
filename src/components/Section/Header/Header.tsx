@@ -301,12 +301,12 @@ const Header: React.FC = () => {
                 IVR 2
               </Button>
             </Box>
-            <CustomLink href="/user/register">
+            <CustomLink href="/user/login">
               <Button
                 variant="contained"
                 sx={{ backgroundColor: "black", borderRadius: 0 }}
               >
-                Sign Up
+                Login
               </Button>
             </CustomLink>
             <CustomLink  >
