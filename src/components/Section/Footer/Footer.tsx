@@ -127,7 +127,7 @@ const Footer = () => {
             Contact
           </Typography>
           <Typography variant="body2" gutterBottom>
-            Email: durgapurfoundation.23@gmail.com
+            Email: contact@sanakamedical.com
           </Typography>
           <Typography variant="body2" gutterBottom>
             Phone: 84204 61369
