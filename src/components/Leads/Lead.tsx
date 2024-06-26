@@ -32,7 +32,7 @@ const Leads: React.FC = () => {
               <TableRow>
                 <TableCell>Name</TableCell>
                 <TableCell>Phone Number</TableCell>
-                <TableCell>Email</TableCell>
+                <TableCell>Place</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
