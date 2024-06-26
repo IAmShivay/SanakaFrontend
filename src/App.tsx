@@ -34,7 +34,6 @@ const ContactUs = React.lazy(
 const UserDashboard = React.lazy(() => import("./components/User/Main"));
 
 const App: React.FC = () => {
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -70,11 +69,8 @@ const App: React.FC = () => {
 const GeneralRoute: React.FC = () => (
   <React.Fragment>
     <Header />
-    <NotificationBar
-      message="Applications for starting of New PG Medical courses and Increase of seats in PG Medical 
-courses for Academic Year: 2024-25!"
-      link="https://www.nmc.org.in/MCIRest/open/getDocument?path=/Documents/Public/Portal/LatestNews/Colleges%20concerned-%20Regarding-2.pdf"
-    />
+    <NotificationBar />
+
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="mbbs" element={<MBBSPage />} />
