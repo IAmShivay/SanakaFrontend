@@ -28,7 +28,7 @@ const Header: React.FC = () => {
   const [academicsMenuOpen, setAcademicsMenuOpen] = useState(false);
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isMd = useMediaQuery(theme.breakpoints.down("lg"));
   const menuAnchorRef = useRef(null);
   const academicsAnchorRef = useRef(null);
 
