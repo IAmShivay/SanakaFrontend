@@ -144,7 +144,7 @@ const Footer = () => {
           </Typography>
           <Grid container>
             <Grid item>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/MBBSNURSINGadmission" target="_blank" rel="noopener noreferrer">
                 <motion.img
                   src="/icons8-facebook-48.png"
                   alt="Facebook"
@@ -158,7 +158,7 @@ const Footer = () => {
               </a>
             </Grid>
             <Grid item>
-              <a href="https://www.website.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.sanakamedical.com" target="_blank" rel="noopener noreferrer">
                 <motion.img
                   src="/icons8-website-48.png"
                   alt="Website"
@@ -172,9 +172,23 @@ const Footer = () => {
               </a>
             </Grid>
             <Grid item>
-              <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+918017508002" target="_blank" rel="noopener noreferrer">
                 <motion.img
                   src="/icons8-whatsapp-96.png"
+                  alt="WhatsApp"
+                  style={{
+                    height: "30px",
+                    marginRight: "10px",
+                    transition: "transform 0.3s ease-in-out",
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                />
+              </a>
+            </Grid>
+            <Grid item>
+              <a href="https://www.youtube.com/watch?v=JOYQ1yJsde8" target="_blank" rel="noopener noreferrer">
+                <motion.img
+                  src="/icons8-youtube-96.png"
                   alt="WhatsApp"
                   style={{
                     height: "30px",

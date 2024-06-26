@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Box, Typography, Link } from "@mui/material";
 import { keyframes } from "@emotion/react";
-import FiberNewIcon from "@mui/icons-material/FiberNew";
 
 const scroll = keyframes`
   0% { transform: translateX(100%); }
@@ -94,19 +93,29 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
           >
             <Box
               sx={{
-                backgroundColor: "red",
-                border: "2px solid yellow",
-                borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 32,
-                height: 32,
                 marginRight: "16px", // Increased from 8px to 16px
+                animation: "blink 1s infinite", // Blinking animation
+                padding: "8px",
+                borderRadius: "4px", // Rounded corners for the box
+                boxShadow: "0px 0px 5px rgba(0,0,0,0.2)", // Optional: adds a slight shadow
+                "@keyframes blink": {
+                  "0%": { opacity: 1 },
+                  "50%": { opacity: 0.5 }, // Adjusted opacity to 0.5 (half visible)
+                  "100%": { opacity: 1 },
+                },
               }}
             >
-              <FiberNewIcon sx={{ color: "white" }} />
+              <Typography
+                variant="body1"
+                sx={{ color: "red", fontWeight: 800 }}
+              >
+                New
+              </Typography>
             </Box>
+
             <Typography variant="body1" component="span">
               {item.message}
             </Typography>
