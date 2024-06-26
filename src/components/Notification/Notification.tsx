@@ -26,9 +26,9 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       message: "MBBS admission open for session 2024-2025",
       link: "/features/dark-mode",
     },
-    { message: "Schloership,Loan & Student Credit Card Facility Availble", link: "/summer-sale" },
+    { message: "Scholarship,Loan & Student Credit Card Facility Available", link: "/summer-sale" },
     {
-      message: "25% Scholarship Availble",
+      message: "25% Scholarship Available",
       link: "/webinars/react-best-practices",
     },
     { message: "System maintenance scheduled for tonight" },
