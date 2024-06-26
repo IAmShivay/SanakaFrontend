@@ -20,21 +20,18 @@ interface NotificationBarProps {
 const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   const notificationRef = useRef<HTMLDivElement>(null);
 
-  // Demo notification items
   const demoItems: NotificationItem[] = [
     {
       message: "MBBS admission open for session 2024-2025",
       link: "/features/dark-mode",
     },
-    { message: "Scholarship,Loan & Student Credit Card Facility Available", link: "/summer-sale" },
+    {
+      message: "Scholarship,Loan & Student Credit Card Facility Available",
+      link: "/summer-sale",
+    },
     {
       message: "25% Scholarship Available",
       link: "/webinars/react-best-practices",
-    },
-    { message: "System maintenance scheduled for tonight" },
-    {
-      message: "Check out our latest blog post on UI/UX trends",
-      link: "/blog/ui-ux-trends",
     },
   ];
 
