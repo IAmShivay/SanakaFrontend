@@ -3,7 +3,7 @@ import { Link as MuiLink } from "@mui/material";
 
 interface CustomLinkProps {
   children: ReactNode;
-  href:string;
+  href?:string;
 }
 
 const CustomLink: React.FC<CustomLinkProps> = ({ children, ...rest }) => {

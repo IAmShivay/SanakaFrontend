@@ -309,8 +309,9 @@ const Header: React.FC = () => {
                 Sign Up
               </Button>
             </CustomLink>
-            <CustomLink href="/images/sanakaProspectus.pdf">
-              <Button
+            <CustomLink  >
+              <Button 
+              onClick={() => handleLinkClick("/images/sanakaProspectus.pdf")}
                 variant="outlined"
                 sx={{
                   marginLeft: 2,
