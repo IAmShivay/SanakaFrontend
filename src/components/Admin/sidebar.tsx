@@ -13,15 +13,14 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Leads from "../Leads/Lead";
-import Lead from "../Leads/Lead";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-
+import Dashcard from "../Dashboard/Dashcard";
 const drawerWidth = 240;
 
 const Dashboard: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] =
-    useState<JSX.Element | null>(<Lead />);
+    useState<JSX.Element | null>(<Dashcard />);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -39,7 +38,7 @@ const Dashboard: React.FC = () => {
   const drawer = (
     <div style={{ paddingTop: "30%" }}>
       <List>
-        <ListItem button>
+        <ListItem button onClick={() => handleMenuClick(<Dashcard />)}>
           <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem button onClick={() => handleMenuClick(<Leads />)}>

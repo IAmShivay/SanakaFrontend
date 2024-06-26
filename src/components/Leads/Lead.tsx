@@ -5,12 +5,6 @@ import { leadsGets } from '../../app/leads/leadSlice';
 import { RootState } from "../../store";
 import { AppDispatch } from "../../store";
 
-// interface Lead {
-//   name: string;
-//   email: string;
-//   phoneNumber: any;
-// }
-
 const Leads: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { loading, leads, error } = useSelector(
