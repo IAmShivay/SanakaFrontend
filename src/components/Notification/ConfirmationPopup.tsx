@@ -51,7 +51,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({
         }}
       >
         <Typography>
-          Your information has been shared with our Counsellor. They will call
+          Your information has been shared with our College Representative. They will call
           you back soon. You can also reach them at the following numbers:
         </Typography>
         <div
