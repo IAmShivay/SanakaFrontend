@@ -89,7 +89,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
     const element = notificationRef.current;
     if (!element) return;
 
-    const animationDuration = element.offsetWidth / 60;
+    const animationDuration = element.offsetWidth / 80;
     element.style.animationDuration = `${animationDuration}s`;
 
     const timer = setTimeout(() => {}, duration * 1000);
@@ -105,6 +105,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         display: "flex",
         alignItems: "center",
         backgroundColor: "#0035b3",
+        width:'full',
         color: "white",
         padding: "10px",
         borderRadius: "5px",
@@ -119,7 +120,6 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          overflow: "hidden",
           animation: `${scroll} linear infinite`,
           color: "white",
           whiteSpace: "nowrap",
