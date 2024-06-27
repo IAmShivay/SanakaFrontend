@@ -139,7 +139,6 @@ const Header: React.FC = () => {
       sx={{
         display: "flex",
         flexGrow: 1,
-        gap: 2,
         height: "5vh",
         alignItems: "center",
       }}
