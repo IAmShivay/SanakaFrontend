@@ -144,8 +144,8 @@ const Header: React.FC = () => {
                 <Typography>Faculty</Typography>
               </MenuItem>
             </Menu>
-            <MenuItem onClick={() => handleLinkClick("/contactUs")}>
-              <Typography>Administration</Typography>
+            <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
+              <Typography>Neet Updates</Typography>
             </MenuItem>
           </Menu>
           <motion.div
@@ -243,9 +243,9 @@ const Header: React.FC = () => {
               </Typography>
             </MenuItem>
           </Menu>
-          <MenuItem onClick={() => handleLinkClick("/contactUs")}>
+          <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
             <Typography variant="body1" color="inherit">
-              Administration
+              Neet Updates
             </Typography>
           </MenuItem>
           <Box
@@ -262,7 +262,7 @@ const Header: React.FC = () => {
                 color="inherit"
                 sx={{ borderRadius: 0 }}
               >
-                Contact
+                FEE DETAILS
               </Button>
             </CustomLink>
             <Box sx={{ display: "flex", gap: 1 }}>

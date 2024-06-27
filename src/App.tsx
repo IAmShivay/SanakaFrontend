@@ -13,6 +13,7 @@ import GNMPage from "./components/Section/Programs/GNM";
 import ProgramsPage from "./components/Section/Programs";
 import FAQPage from "./components/Section/Faq/Faq";
 import Lead from "./components/Leads/Lead";
+import NewsComponent from "./components/Section/News/news";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
@@ -70,7 +71,6 @@ const GeneralRoute: React.FC = () => (
   <React.Fragment>
     <Header />
     <NotificationBar />
-
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="mbbs" element={<MBBSPage />} />
@@ -82,6 +82,8 @@ const GeneralRoute: React.FC = () => (
       <Route path="contactUs" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
       <Route path="faq" element={<FAQPage />} />
+      <Route path="/neetupdates" element={<NewsComponent />} />
+
     </Routes>
     <Footer />
   </React.Fragment>
