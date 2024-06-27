@@ -14,13 +14,16 @@ import ProgramsPage from "./components/Section/Programs";
 import FAQPage from "./components/Section/Faq/Faq";
 import Lead from "./components/Leads/Lead";
 import NewsComponent from "./components/Section/News/news";
+import PDFViewer from "./components/Section/pdf/pdf";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
 const RegisterPage = React.lazy(
   () => import("./components/Section/Register/Register")
 );
+
 const LoginPage = React.lazy(() => import("./components/Section/Login/Login"));
+2
 const Home = React.lazy(() => import("./components/Home/Home"));
 const Main = React.lazy(() => import("./components/Admin/Main"));
 const AdminAcessRequest = React.lazy(
@@ -83,6 +86,8 @@ const GeneralRoute: React.FC = () => (
       <Route path="aboutUs" element={<AboutUs />} />
       <Route path="faq" element={<FAQPage />} />
       <Route path="/neetupdates" element={<NewsComponent />} />
+      <Route path="/images/sanakaProspectus" element={<PDFViewer pdfUrl="/images/sanakaProspectus.pdf" />} />
+
 
     </Routes>
     <Footer />

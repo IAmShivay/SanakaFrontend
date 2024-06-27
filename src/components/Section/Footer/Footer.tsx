@@ -1,54 +1,69 @@
-import { Typography, Grid, TextField, Button } from "@mui/material";
+import React from "react";
+import {
+  Typography,
+  Grid,
+  TextField,
+  Button,
+  Box,
+  Container,
+} from "@mui/material";
 import { motion } from "framer-motion";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const theme = useTheme();
-  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
-  const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
-  const isXsUp = useMediaQuery(theme.breakpoints.up('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const getWidth = () => {
-    if (isLgUp) return '98%';
-    if (isMdUp) return '78vh';
-    if (isXsUp) return '95%';
-    return '100%'; // Fallback for smaller devices
-  };
-
-  const getHeight = () => {
-    if (isLgUp) return '100%';
-    if (isMdUp) return '100%';
-    if (isXsUp) return '100%';
-    return '100vh'; // Fallback for smaller devices
-  };
+  const SocialIcon: React.FC<{ src: string; alt: string; href: string }> = ({
+    src,
+    alt,
+    href,
+  }) => (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.1 }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        style={{
+          height: isMobile ? "24px" : "30px",
+          marginRight: "10px",
+        }}
+      />
+    </motion.a>
+  );
 
   return (
-    <motion.div
+    <Box
+      component={motion.footer}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      style={{
+      sx={{
         backgroundColor: "#E5E5E5",
         color: "#000",
-        padding: "30px 20px",
-        marginTop: "20px",
-        width: getWidth(),
-        height: getHeight(),
+        py: { xs: 4, md: 6 },
+        mt: 3,
       }}
     >
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={4} style={{ marginBottom: "20px" }}>
-          <Grid container direction="column" alignItems="flex-start">
-            <img
-              src="images/Loader.png"
-              alt="Logo"
-              style={{ height: "50px", marginBottom: "10px" }}
-            />
+      <Container maxWidth="lg">
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={4}>
+            <Box mb={2}>
+              <img
+                src="images/Loader.png"
+                alt="Logo"
+                style={{ height: isMobile ? "40px" : "50px" }}
+              />
+            </Box>
             <Typography
-              variant="h5"
+              variant={isMobile ? "h6" : "h5"}
               gutterBottom
-              style={{ fontWeight: "bold" }}
+              fontWeight="bold"
             >
               Newsletter Signup
             </Typography>
@@ -56,161 +71,102 @@ const Footer = () => {
               Sign up for our newsletter to stay updated with our latest offers
               and news.
             </Typography>
-            <Grid container spacing={2} alignItems="center">
-              <Grid
-                item
-                xs={8}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
+            <Box display="flex" mt={2}>
+              <TextField
+                label="Email Address"
+                variant="outlined"
+                size="small"
+                fullWidth
+                sx={{ mr: 1 }}
+              />
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "black",
+                  color: "white",
+                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.8)" },
                 }}
               >
-                <TextField
-                  label="Email Address"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  style={{ width: "100%", marginTop: "10px" }}
-                  inputProps={{ style: { fontSize: "0.875rem", padding: "5px" } }}
-                />
-              </Grid>
-              <Grid
-                item
-                xs={4}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  style={{
-                    backgroundColor: "black",
-                    color: "white",
-                    padding: "6px 12px",
-                    fontSize: "0.875rem",
-                    textTransform: "none",
-                    height: "100%", // Ensure the button height matches the input field
-                  }}
-                >
-                  Sign Up
-                </Button>
-              </Grid>
-            </Grid>
+                SignUp
+              </Button>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant={isMobile ? "h6" : "h5"}
+              gutterBottom
+              fontWeight="bold"
+            >
+              Quick Links
+            </Typography>
+            <Link to="/aboutUs" style={{ textDecoration: "none", color: "inherit" }}>
+              <Typography variant="body2" gutterBottom> About Us</Typography>
+            </Link>
+            <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+              <Typography variant="body2" gutterBottom> FAQs</Typography>
+            </Link>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography
+              variant={isMobile ? "h6" : "h5"}
+              gutterBottom
+              fontWeight="bold"
+            >
+              Contact
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Email: contact@sanakamedical.com
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Phone: 84204 61369
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Address: Malandighi, Kanksha, Durgapur-713212, India
+            </Typography>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4} style={{ marginBottom: "20px" }}>
-          <Typography variant="h5" gutterBottom style={{ fontWeight: "bold" }}>
-            Quick Links
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <Link
-              to="/aboutUs"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              About Us
-            </Link>
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            <Link
-              to="/faq"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              FAQs
-            </Link>
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Typography variant="h5" gutterBottom style={{ fontWeight: "bold" }}>
-            Contact
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            Email: contact@sanakamedical.com
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            Phone: 84204 61369
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            Address: Malandighi, Kanksha, Durgapur-713212, India
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container style={{ marginTop: "20px" }}>
-        <Grid item xs={12} md={4}>
-          <Typography variant="h5" gutterBottom style={{ fontWeight: "bold" }}>
+
+        <Box mt={4}>
+          <Typography
+            variant={isMobile ? "h6" : "h5"}
+            gutterBottom
+            fontWeight="bold"
+          >
             Follow Us On
           </Typography>
-          <Grid container>
-            <Grid item>
-              <a href="https://www.facebook.com/MBBSNURSINGadmission" target="_blank" rel="noopener noreferrer">
-                <motion.img
-                  src="/icons8-facebook-48.png"
-                  alt="Facebook"
-                  style={{
-                    height: "30px",
-                    marginRight: "10px",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                />
-              </a>
-            </Grid>
-            <Grid item>
-              <a href="https://www.sanakamedical.com" target="_blank" rel="noopener noreferrer">
-                <motion.img
-                  src="/icons8-website-48.png"
-                  alt="Website"
-                  style={{
-                    height: "30px",
-                    marginRight: "10px",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                />
-              </a>
-            </Grid>
-            <Grid item>
-              <a href="https://wa.me/+918017508002" target="_blank" rel="noopener noreferrer">
-                <motion.img
-                  src="/icons8-whatsapp-96.png"
-                  alt="WhatsApp"
-                  style={{
-                    height: "30px",
-                    marginRight: "10px",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                />
-              </a>
-            </Grid>
-            <Grid item>
-              <a href="https://www.youtube.com/watch?v=JOYQ1yJsde8" target="_blank" rel="noopener noreferrer">
-                <motion.img
-                  src="/icons8-youtube-96.png"
-                  alt="WhatsApp"
-                  style={{
-                    height: "30px",
-                    marginRight: "10px",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                />
-              </a>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      <hr />
-      <Grid container style={{ marginTop: "20px", textAlign: "center" }}>
-        <Grid item xs={12} md={12}>
-          <Typography variant="body2" gutterBottom>
+          <Box display="flex" flexWrap="wrap">
+            <SocialIcon
+              src="/icons8-facebook-48.png"
+              alt="Facebook"
+              href="https://www.facebook.com/MBBSNURSINGadmission"
+            />
+            <SocialIcon
+              src="/icons8-website-48.png"
+              alt="Website"
+              href="https://www.sanakamedical.com"
+            />
+            <SocialIcon
+              src="/icons8-whatsapp-96.png"
+              alt="WhatsApp"
+              href="https://wa.me/+918017508002"
+            />
+            <SocialIcon
+              src="/icons8-youtube-96.png"
+              alt="YouTube"
+              href="https://www.youtube.com/watch?v=JOYQ1yJsde8"
+            />
+          </Box>
+        </Box>
+
+        <Box mt={4} pt={2} borderTop={1} borderColor="grey.300" textAlign="center">
+          <Typography variant="body2">
             © 2024 Durgapur Education Foundation. All rights reserved.
           </Typography>
-        </Grid>
-      </Grid>
-    </motion.div>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 

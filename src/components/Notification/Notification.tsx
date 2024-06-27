@@ -4,6 +4,7 @@ import { keyframes } from "@emotion/react";
 import TabWithPopup from "../PopupForm/PopupForm";
 import { FormData } from "../Home/Home";
 import ConfirmationPopup from "./ConfirmationPopup";
+
 const scroll = keyframes`
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
@@ -22,7 +23,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   const notificationRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [formFilled, setFormFilled] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false); // New state for confirmation popup
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
     const storedFormFilled = localStorage.getItem("formFilled");
@@ -47,7 +48,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       setFormFilled(true);
       localStorage.setItem("formFilled", "true");
       setIsOpen(false);
-      setShowConfirmation(true); // Show the confirmation popup
+      setShowConfirmation(true);
     } else {
       alert("Form is not filled out completely. Please fill it out.");
     }
@@ -68,6 +69,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       handleOpen();
     }
   };
+
   const demoItems: NotificationItem[] = [
     {
       message: "MBBS admission open for session 2024-2025",
@@ -100,31 +102,28 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   return (
     <Box
       sx={{
-        width: { xs: "100%", md: "80vh", lg: "100%" },
-        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
         backgroundColor: "#0035b3",
         color: "white",
-        padding: "10px 0",
-        position: "relative",
-        top: 0,
-        zIndex: 1000,
-        height: { xs: "70%", md: "80%", lg: "90%" },
-        marginBottom: "10px",
+        padding: "10px",
         borderRadius: "5px",
+        marginBottom: "10px",
+        overflow: "hidden",
+        position: "relative",
+        zIndex: 1000,
       }}
     >
       <Box
         ref={notificationRef}
         sx={{
-          display: "inline-block",
-          whiteSpace: "nowrap",
-          animation: `${scroll} linear infinite`,
-          width: "full",
+          display: "flex",
+          alignItems: "center",
           overflow: "hidden",
+          animation: `${scroll} linear infinite`,
           color: "white",
-          padding: "10px 0",
+          whiteSpace: "nowrap",
           position: "relative",
-          top: 0,
           zIndex: 1000,
         }}
       >
@@ -135,7 +134,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
             sx={{
               color: "inherit",
               textDecoration: "none",
-              marginRight: "40px",
+              marginRight: "20px", // Adjust spacing between items
               display: "inline-flex",
               alignItems: "center",
             }}
@@ -145,22 +144,19 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginRight: "16px", // Increased from 8px to 16px
-                animation: "blink 1s infinite", // Blinking animation
+                marginRight: "8px",
+                animation: "blink 1s infinite",
                 padding: "8px",
-                borderRadius: "4px", // Rounded corners for the box
-                boxShadow: "0px 0px 5px rgba(0,0,0,0.2)", // Optional: adds a slight shadow
+                borderRadius: "4px",
+                boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
                 "@keyframes blink": {
                   "0%": { opacity: 1 },
-                  "50%": { opacity: 0.5 }, // Adjusted opacity to 0.5 (half visible)
+                  "50%": { opacity: 0.5 },
                   "100%": { opacity: 1 },
                 },
               }}
             >
-              <Typography
-                variant="body1"
-                sx={{ color: "red", fontWeight: 800 }}
-              >
+              <Typography variant="body1" sx={{ color: "red", fontWeight: 800 }}>
                 New
               </Typography>
             </Box>
