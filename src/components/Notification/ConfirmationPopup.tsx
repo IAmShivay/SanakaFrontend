@@ -6,104 +6,98 @@ import {
   DialogActions,
   Button,
   Typography,
+  Box,
 } from "@mui/material";
 
 interface ConfirmationPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  message: any;
 }
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({
   isOpen,
   onClose,
+  message,
 }) => {
+  // Splitting the message to format the phone number separately
+  const [mainMessage, phoneNumber] = message.split(":");
+  console.log(mainMessage);
   return (
     <Dialog
       open={isOpen}
       onClose={onClose}
-      PaperProps={{
-        style: {
-          padding: "24px",
+      sx={{
+        "& .MuiDialog-paper": {
           borderRadius: "8px",
-          boxShadow: "0 3px 10px rgba(0, 0, 0, 0.2)",
-          maxWidth: "500px",
+          padding: "24px",
+          maxWidth: "400px",
           margin: "auto",
+          boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
         },
       }}
     >
       <DialogTitle
-        style={{
-          backgroundColor: "#0035b3",
-          color: "#fff",
-          padding: "16px 24px",
+        sx={{
+          backgroundColor: "background.default",
+          color: "text.primary",
+          padding: "16px",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
           textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "1.2rem",
         }}
       >
-        Information Submitted
+        Your Response Has Been Recorded
       </DialogTitle>
       <DialogContent
-        style={{
-          margin: "16px 0",
-          padding: "0 24px",
+        sx={{
+          padding: "16px",
           textAlign: "center",
         }}
       >
-        <Typography>
-          Your information has been shared with our College Representative. They will call
-          you back soon. You can also reach them at the following numbers:
+        <Typography
+          variant="body2"
+          sx={{ marginBottom: "16px", color: "text.secondary" }}
+        >
+          Our College Representative will call you back soon. You can also reach
+          them at the following number:
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginTop: "16px",
+        <Box
+          sx={{
+            backgroundColor: "background.paper",
+            padding: "12px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            display: "inline-block",
           }}
         >
-          <div
-            style={{
-              marginBottom: "8px",
-              display: "flex",
-              alignItems: "center",
-            }}
+          <Typography
+            variant="body1"
+            component="span"
+            sx={{ fontWeight: "bold", color: "primary.main" }}
           >
-            <Typography variant="body1" style={{ color: "#0035b3" }}>
-              <strong>+91 7477798949</strong>
-            </Typography>
-          </div>
-          <div
-            style={{
-              marginBottom: "8px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Typography variant="body1" style={{ color: "#0035b3" }}>
-              <strong>+91 7477798950</strong>
-            </Typography>
-          </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Typography variant="body1" style={{ color: "#0035b3" }}>
-              <strong>+91 7063592396</strong>
-            </Typography>
-          </div>
-        </div>
+            {phoneNumber}
+          </Typography>
+        </Box>
       </DialogContent>
       <DialogActions
-        style={{
+        sx={{
+          padding: "8px",
           justifyContent: "center",
-          padding: "16px 24px",
         }}
       >
         <Button
           onClick={onClose}
-          style={{
-            backgroundColor: "#f50057",
-            color: "#fff",
-            padding: "8px 24px",
-            borderRadius: "20px",
+          sx={{
+            backgroundColor: "primary.main",
+            color: "primary.contrastText",
+            "&:hover": {
+              backgroundColor: "primary.dark",
+            },
+            padding: "8px 16px",
+            borderRadius: "8px",
             textTransform: "none",
           }}
         >

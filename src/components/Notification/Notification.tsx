@@ -13,6 +13,7 @@ const scroll = keyframes`
 interface NotificationItem {
   message: string;
   link?: string;
+  ConfirmationMessage?: string;
 }
 
 interface NotificationBarProps {
@@ -24,6 +25,8 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [formFilled, setFormFilled] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedNotification, setSelectedNotification] =
+    useState<NotificationItem | null>(null);
 
   useEffect(() => {
     const storedFormFilled = localStorage.getItem("formFilled");
@@ -61,11 +64,12 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
     []
   );
 
-  const handleLinkClick = (link: string) => {
+  const handleLinkClick = (notification: NotificationItem) => {
     const storedFormFilled = localStorage.getItem("formFilled");
     if (storedFormFilled === "true") {
-      window.location.href = link;
+      window.location.href = notification.link!;
     } else {
+      setSelectedNotification(notification);
       handleOpen();
     }
   };
@@ -74,14 +78,20 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
     {
       message: "MBBS admission open for session 2024-2025",
       link: "/features/dark-mode",
+      ConfirmationMessage:
+        "  Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798949",
     },
     {
       message: "Scholarship,Loan & Student Credit Card Facility Available",
       link: "/summer-sale",
+      ConfirmationMessage:
+        "  Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
     },
     {
       message: "25% Scholarship Available",
       link: "/webinars/react-best-practices",
+      ConfirmationMessage:
+        "  Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7063592396",
     },
   ];
 
@@ -89,23 +99,15 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
     const element = notificationRef.current;
     if (!element) return;
 
-    const animationDuration = element.offsetWidth / 80;
+    const animationDuration = element.offsetWidth / 90;
     element.style.animationDuration = `${animationDuration}s`;
-
-    const timer = setTimeout(() => {}, duration * 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
   }, [duration]);
 
   return (
     <Box
       sx={{
         display: "flex",
-        alignItems: "center",
         backgroundColor: "#0035b3",
-        width:'full',
         color: "white",
         padding: "10px",
         borderRadius: "5px",
@@ -130,7 +132,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         {demoItems.map((item, index) => (
           <Link
             key={index}
-            onClick={() => handleLinkClick(item.link!)}
+            onClick={() => handleLinkClick(item)}
             sx={{
               color: "inherit",
               textDecoration: "none",
@@ -156,7 +158,10 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
                 },
               }}
             >
-              <Typography variant="body1" sx={{ color: "red", fontWeight: 800 }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "red", fontWeight: 800 }}
+              >
                 New
               </Typography>
             </Box>
@@ -173,10 +178,13 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         formFilled={formFilled}
         onFormChange={handleFormChange}
       />
-      <ConfirmationPopup
-        isOpen={showConfirmation}
-        onClose={() => setShowConfirmation(false)}
-      />
+      {selectedNotification && (
+        <ConfirmationPopup
+          isOpen={showConfirmation}
+          onClose={() => setShowConfirmation(false)}
+          message={selectedNotification.ConfirmationMessage}
+        />
+      )}
     </Box>
   );
 };
