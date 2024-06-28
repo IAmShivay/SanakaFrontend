@@ -148,7 +148,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
             sx={{
               color: "inherit",
               textDecoration: "none",
-              marginRight: "20px",
+              marginRight: "100px",
               display: "inline-flex",
               alignItems: "center",
             }}
