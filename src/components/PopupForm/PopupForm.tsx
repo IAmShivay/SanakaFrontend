@@ -175,7 +175,6 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
 
-
   const handleChange = (e: any) => {
     const { name, value } = e.target;
 
@@ -194,7 +193,9 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
     }
     if (name === "email") {
       const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-      setEmailError(isValidEmail ? null : "Please enter a valid email address.");
+      setEmailError(
+        isValidEmail ? null : "Please enter a valid email address."
+      );
     }
     // Notify parent component of form changes
     onFormChange({
@@ -283,11 +284,14 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
             onChange={handleChange}
             label="Course"
           >
+            <MenuItem value="Pg(Md/Ms)">Pg(Md/Ms)</MenuItem>
             <MenuItem value="MBBS">MBBS</MenuItem>
-            <MenuItem value="Engineering">Engineering</MenuItem>
-            <MenuItem value="Business Administration">
-              Business Administration
-            </MenuItem>
+            <MenuItem value="Bsc.nursing">Bsc.nursing</MenuItem>
+            <MenuItem value="Gnm">Gnm </MenuItem>
+            <MenuItem value="B.pharma">B.pharma</MenuItem>
+            <MenuItem value="B.tech">B.tech</MenuItem>
+            <MenuItem value="B.tech lateral">B.tech lateral</MenuItem>
+            <MenuItem value="Diploma">Diploma</MenuItem>
           </Select>
         </FormControl>
         <TextField

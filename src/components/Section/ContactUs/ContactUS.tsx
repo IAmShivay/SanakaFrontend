@@ -57,7 +57,7 @@ const ContactUs: React.FC = () => {
     }
   };
 
-  const ConfirmationMessages:any =
+  const ConfirmationMessages: any =
     "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798949";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -100,10 +100,13 @@ const ContactUs: React.FC = () => {
         >
           <img
             src="/images/Loader.png"
-            
             alt="Company Logo"
-            style={{ width: "150px", marginBottom: "20px", borderRadius: "8px" }}
-            />
+            style={{
+              width: "150px",
+              marginBottom: "20px",
+              borderRadius: "8px",
+            }}
+          />
         </motion.div>
         <Typography
           variant="h2"
@@ -222,11 +225,14 @@ const ContactUs: React.FC = () => {
                 onChange={handleChange}
                 label="Course"
               >
+                <MenuItem value="Pg(Md/Ms)">Pg(Md/Ms)</MenuItem>
                 <MenuItem value="MBBS">MBBS</MenuItem>
-                <MenuItem value="Engineering">Engineering</MenuItem>
-                <MenuItem value="Business Administration">
-                  Business Administration
-                </MenuItem>
+                <MenuItem value="Bsc.nursing">Bsc.nursing</MenuItem>
+                <MenuItem value="Gnm">Gnm </MenuItem>
+                <MenuItem value="B.pharma">B.pharma</MenuItem>
+                <MenuItem value="B.tech">B.tech</MenuItem>
+                <MenuItem value="B.tech lateral">B.tech lateral</MenuItem>
+                <MenuItem value="Diploma">Diploma</MenuItem>
               </Select>
             </FormControl>
           </motion.div>
