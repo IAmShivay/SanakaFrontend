@@ -22,7 +22,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({
 }) => {
   // Splitting the message to format the phone number separately
   const [mainMessage, phoneNumber] = message.split(":");
-  console.log(mainMessage);
+  console.log(mainMessage)
   return (
     <Dialog
       open={isOpen}
