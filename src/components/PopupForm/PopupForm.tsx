@@ -173,6 +173,8 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
     place: "",
   });
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -190,7 +192,10 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
         isValidPhoneNumber ? null : "Phone number must be 10 digits."
       );
     }
-
+    if (name === "email") {
+      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      setEmailError(isValidEmail ? null : "Please enter a valid email address.");
+    }
     // Notify parent component of form changes
     onFormChange({
       name: formData.name,
@@ -251,6 +256,8 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
           label="Email"
           type="email"
           fullWidth
+          error={!!emailError}
+          helperText={emailError}
           variant="standard"
           value={formData.email}
           onChange={handleChange}
