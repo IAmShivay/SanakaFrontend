@@ -99,10 +99,11 @@ const ContactUs: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <img
-            src="/path/to/your/logo.png"
+            src="/images/Loader.png"
+            
             alt="Company Logo"
-            style={{ width: "150px", marginBottom: "20px" }}
-          />
+            style={{ width: "150px", marginBottom: "20px", borderRadius: "8px" }}
+            />
         </motion.div>
         <Typography
           variant="h2"
