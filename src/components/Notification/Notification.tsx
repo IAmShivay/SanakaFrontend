@@ -6,7 +6,7 @@ import { FormData } from "../Home/Home";
 import ConfirmationPopup from "./ConfirmationPopup";
 
 const scroll = keyframes`
-  0% { transform: translateX(100%); }
+  0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 `;
 
@@ -25,8 +25,8 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [formFilled, setFormFilled] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [selectedNotification, setSelectedNotification] =
-    useState<NotificationItem | null>(null);
+  const [selectedNotification, setSelectedNotification] = useState<NotificationItem | null>(null);
+  const [forceUpdate, setForceUpdate] = useState(false);
 
   useEffect(() => {
     const storedFormFilled = localStorage.getItem("formFilled");
@@ -79,19 +79,19 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       message: "MBBS admission open for session 2024-2025",
       link: "/features/dark-mode",
       ConfirmationMessage:
-        "  Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798949",
+        "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798949",
     },
     {
       message: "Scholarship,Loan & Student Credit Card Facility Available",
       link: "/summer-sale",
       ConfirmationMessage:
-        "  Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
+        "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
     },
     {
       message: "25% Scholarship Available",
       link: "/webinars/react-best-practices",
       ConfirmationMessage:
-        "  Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7063592396",
+        "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7063592396",
     },
   ];
 
@@ -99,14 +99,24 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
     const element = notificationRef.current;
     if (!element) return;
 
-    const animationDuration = element.offsetWidth / 90;
+    const contentWidth = element.scrollWidth;
+    const containerWidth = element.offsetWidth;
+    const animationDuration = (contentWidth / containerWidth) * duration;
     element.style.animationDuration = `${animationDuration}s`;
-  }, [duration]);
+  }, [duration, forceUpdate]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setForceUpdate(prev => !prev);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <Box
       sx={{
-        display: "flex",
         backgroundColor: "#0035b3",
         color: "white",
         padding: "10px",
@@ -115,6 +125,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         overflow: "hidden",
         position: "relative",
         zIndex: 1000,
+        width: "auto",
       }}
     >
       <Box
@@ -127,16 +138,17 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
           whiteSpace: "nowrap",
           position: "relative",
           zIndex: 1000,
+          width: "fit-content",
         }}
       >
-        {demoItems.map((item, index) => (
+        {[...demoItems, ...demoItems].map((item, index) => (
           <Link
             key={index}
             onClick={() => handleLinkClick(item)}
             sx={{
               color: "inherit",
               textDecoration: "none",
-              marginRight: "20px", // Adjust spacing between items
+              marginRight: "20px",
               display: "inline-flex",
               alignItems: "center",
             }}
