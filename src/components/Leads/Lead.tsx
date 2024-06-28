@@ -10,7 +10,6 @@ const Leads: React.FC = () => {
   const { loading, leads, error } = useSelector(
     (state: RootState) => state.leads
   );
-  console.log(leads);
 
   useEffect(() => {
     dispatch(leadsGets());

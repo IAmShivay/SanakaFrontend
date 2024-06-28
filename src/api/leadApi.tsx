@@ -14,7 +14,6 @@ export const Leads = async (credentials: Credentials) => {
   } catch (error: any) {
     if (error.response) {
       const errorMessage = error.response.data.message;
-      console.log(errorMessage);
       throw errorMessage;
     }
     return error;
@@ -24,12 +23,10 @@ export const Leads = async (credentials: Credentials) => {
 export const LeadsGet = async () => {
   try {
     const response = await axios.get(`${API_URL}/allleads`);
-    console.log(response.data.leads)
     return response.data;
   } catch (error: any) {
     if (error.response) {
       const errorMessage = error.response.data.message;
-      console.log(errorMessage);
       throw errorMessage;
     }
     return error;

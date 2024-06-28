@@ -218,7 +218,6 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
         toast.success("Form submitted successfully!");
 
         // Log form data to console after successful submission
-        console.log("Form Data:", formData);
       } catch (err: any) {
         toast.error(err.message || "Something went wrong. Please try again.");
       } finally {
