@@ -34,6 +34,8 @@ const Leads: React.FC = () => {
                 <TableCell>E-mail</TableCell>
                 <TableCell>Course</TableCell>
                 <TableCell>Place</TableCell>
+                <TableCell>College</TableCell>
+
               </TableRow>
             </TableHead>
             <TableBody>
@@ -44,6 +46,8 @@ const Leads: React.FC = () => {
                   <TableCell>{lead.email}</TableCell>
                   <TableCell>{lead.course}</TableCell>
                   <TableCell>{lead.place}</TableCell>
+                  <TableCell>{lead.college}</TableCell>
+
                 </TableRow>
               ))}
             </TableBody>
