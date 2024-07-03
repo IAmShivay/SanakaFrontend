@@ -9,7 +9,7 @@ interface Credentials {
   phoneNumber: string;
   course:string,
   place:string,
-  college:string,
+  college?:string,
   leads?:[]
 }
 
