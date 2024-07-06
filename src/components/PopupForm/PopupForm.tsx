@@ -20,7 +20,7 @@ import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { states } from "./state";
-import { auth } from "../firebaseConfig";
+import { auth } from "../../firebase/firebaseConfig";
 import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
