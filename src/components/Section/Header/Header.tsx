@@ -198,7 +198,11 @@ const Header: React.FC = () => {
         }}
       >
         <CustomLink href="/contactUs">
-          <Button variant="outlined" color="inherit" size="small">
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ backgroundColor: "black" }}
+          >
             FEE DETAILS
           </Button>
         </CustomLink>
@@ -211,17 +215,15 @@ const Header: React.FC = () => {
             LOGIN
           </Button>
         </CustomLink>
-        <CustomLink>
-          <Button
-            onClick={() => handleLinkClick("/images/sanakaProspectus")}
-            variant="outlined"
-            size="small"
-            style={{ color: "black", borderColor: "black" }}
-          >
-            <DownloadIcon style={{ color: "black" }} />
-            PROSPECTUS
-          </Button>
-        </CustomLink>
+        <Button
+          onClick={() => handleLinkClick("/images/sanakaProspectus")}
+          variant="outlined"
+          size="small"
+          style={{ color: "black", borderColor: "black" }}
+        >
+          <DownloadIcon style={{ color: "black" }} />
+          PROSPECTUS
+        </Button>
       </Box>
     </Box>
   );
