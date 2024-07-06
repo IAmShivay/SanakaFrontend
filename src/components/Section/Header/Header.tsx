@@ -209,7 +209,7 @@ const Header: React.FC = () => {
             variant="outlined"
             size="small"
           >
-            Download Prospectus
+            Prospectus
           </Button>
         </CustomLink>
       </Box>
