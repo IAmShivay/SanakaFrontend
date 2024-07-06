@@ -44,10 +44,14 @@ const Footer: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       sx={{
-        backgroundColor: "#E5E5E5",
-        color: "#000",
+        position: "relative",
+        color: "#f0f0f0",
         py: { xs: 4, md: 6 },
         mt: 3,
+        backgroundImage: `linear-gradient(rgba(0, 53, 179, 0.6), rgba(0, 53, 179, 0.6)), url('https://images.pexels.com/photos/4492065/pexels-photo-4492065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "rgba(53, 109, 168, 0.6)",
       }}
     >
       <Container maxWidth="lg">
@@ -64,10 +68,11 @@ const Footer: React.FC = () => {
               variant={isMobile ? "h6" : "h5"}
               gutterBottom
               fontWeight="bold"
+              color="#f0f0f0"
             >
               Newsletter Signup
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom color="#f0f0f0">
               Sign up for our newsletter to stay updated with our latest offers
               and news.
             </Typography>
@@ -77,7 +82,7 @@ const Footer: React.FC = () => {
                 variant="outlined"
                 size="small"
                 fullWidth
-                sx={{ mr: 1 }}
+                sx={{ mr: 1, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
               />
               <Button
                 variant="contained"
@@ -97,13 +102,14 @@ const Footer: React.FC = () => {
               variant={isMobile ? "h6" : "h5"}
               gutterBottom
               fontWeight="bold"
+              color="#f0f0f0"
             >
               Quick Links
             </Typography>
-            <Link to="/aboutUs" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link to="/aboutUs" style={{ textDecoration: "none", color: "#f0f0f0" }}>
               <Typography variant="body2" gutterBottom> About Us</Typography>
             </Link>
-            <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link to="/faq" style={{ textDecoration: "none", color: "#f0f0f0" }}>
               <Typography variant="body2" gutterBottom> FAQs</Typography>
             </Link>
           </Grid>
@@ -113,16 +119,17 @@ const Footer: React.FC = () => {
               variant={isMobile ? "h6" : "h5"}
               gutterBottom
               fontWeight="bold"
+              color="#f0f0f0"
             >
               Contact
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom color="#f0f0f0">
               Email: contact@sanakamedical.com
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom color="#f0f0f0">
               Phone: 84204 61369
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom color="#f0f0f0">
               Address: Malandighi, Kanksha, Durgapur-713212, India
             </Typography>
           </Grid>
@@ -133,6 +140,7 @@ const Footer: React.FC = () => {
             variant={isMobile ? "h6" : "h5"}
             gutterBottom
             fontWeight="bold"
+            color="#f0f0f0"
           >
             Follow Us On
           </Typography>
@@ -161,7 +169,7 @@ const Footer: React.FC = () => {
         </Box>
 
         <Box mt={4} pt={2} borderTop={1} borderColor="grey.300" textAlign="center">
-          <Typography variant="body2">
+          <Typography variant="body2" color="#f0f0f0">
             © 2024 Durgapur Education Foundation. All rights reserved.
           </Typography>
         </Box>
