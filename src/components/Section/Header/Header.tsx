@@ -15,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
+import DownloadIcon from "@mui/icons-material/Download";
 import Logo from "../../Loader.svg";
 import CustomLink from "../CustomLink/Links";
 import TabWithPopup from "../../PopupForm/PopupForm";
@@ -91,39 +92,39 @@ const Header: React.FC = () => {
   const renderMenuItems = () => (
     <>
       <MenuItem onClick={() => handleLinkClick("/")}>
-        <Typography>Home</Typography>
+        <Typography>HOME</Typography>
       </MenuItem>
       <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
-        <Typography>About Us</Typography>
+        <Typography>ABOUT US</Typography>
       </MenuItem>
       <MenuItem onClick={handleAcademicsMenuToggle}>
-        <Typography>Academics</Typography>
+        <Typography>ACADEMICS</Typography>
         <ArrowDropDownIcon />
       </MenuItem>
       {academicsMenuOpen && (
         <Box ml={2}>
           <MenuItem onClick={() => handleLinkClick("/programs")}>
-            <Typography>Programs</Typography>
+            <Typography>PROGRAMS</Typography>
           </MenuItem>
           <MenuItem onClick={() => handleLinkClick("/research")}>
-            <Typography>Research</Typography>
+            <Typography>RESEARCH</Typography>
           </MenuItem>
           <MenuItem onClick={() => handleLinkClick("/faculty")}>
-            <Typography>Faculty</Typography>
+            <Typography>FACULTY</Typography>
           </MenuItem>
         </Box>
       )}
       <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
-        <Typography>Neet Updates</Typography>
+        <Typography>NEET UPDATES</Typography>
       </MenuItem>
       <MenuItem onClick={() => handleLinkClick("/contactUs")}>
-        <Typography>Fee Details</Typography>
+        <Typography>FEE DETAILS</Typography>
       </MenuItem>
       <MenuItem onClick={() => handleLinkClick("/user/login")}>
-        <Typography>Login</Typography>
+        <Typography>LOGIN</Typography>
       </MenuItem>
       <MenuItem onClick={() => handleLinkClick("/images/sanakaProspectus")}>
-        <Typography>Download Prospectus</Typography>
+        <Typography>PROSPECTUS</Typography>
       </MenuItem>
     </>
   );
@@ -131,7 +132,7 @@ const Header: React.FC = () => {
   const renderMobileMenu = () => (
     <Drawer anchor="right" open={menuOpen} onClose={handleClose}>
       <Box sx={{ width: 250, pt: 2 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: 1 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", pr: 1 }}>
           <IconButton onClick={handleMenuToggle} size="small">
             <CloseIcon /> {/* Close icon */}
           </IconButton>
@@ -152,17 +153,17 @@ const Header: React.FC = () => {
     >
       <MenuItem onClick={() => handleLinkClick("/")}>
         <Typography variant="body2" color="inherit">
-          Home
+          HOME
         </Typography>
       </MenuItem>
       <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
         <Typography variant="body2" color="inherit">
-          About Us
+          ABOUT US
         </Typography>
       </MenuItem>
       <MenuItem ref={academicsAnchorRef} onClick={handleAcademicsMenuToggle}>
         <Typography variant="body2" color="inherit">
-          Academics
+          ACADEMICS
         </Typography>
         <ArrowDropDownIcon />
       </MenuItem>
@@ -174,18 +175,18 @@ const Header: React.FC = () => {
         transformOrigin={{ vertical: "top", horizontal: "left" }}
       >
         <MenuItem onClick={() => handleLinkClick("/programs")}>
-          <Typography variant="body2">Programs</Typography>
+          <Typography variant="body2">PROGRAMS</Typography>
         </MenuItem>
         <MenuItem onClick={() => handleLinkClick("/research")}>
-          <Typography variant="body2">Research</Typography>
+          <Typography variant="body2">RESEARCH</Typography>
         </MenuItem>
         <MenuItem onClick={() => handleLinkClick("/faculty")}>
-          <Typography variant="body2">Faculty</Typography>
+          <Typography variant="body2">FACULTY</Typography>
         </MenuItem>
       </Menu>
       <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
         <Typography variant="body2" color="inherit">
-          Neet Updates
+          NEET UPDATES
         </Typography>
       </MenuItem>
       <Box
@@ -207,7 +208,7 @@ const Header: React.FC = () => {
             size="small"
             sx={{ backgroundColor: "black" }}
           >
-            Login
+            LOGIN
           </Button>
         </CustomLink>
         <CustomLink>
@@ -215,8 +216,10 @@ const Header: React.FC = () => {
             onClick={() => handleLinkClick("/images/sanakaProspectus")}
             variant="outlined"
             size="small"
+            style={{ color: "black", borderColor: "black" }}
           >
-            Download Prospectus
+            <DownloadIcon style={{ color: "black" }} />
+            PROSPECTUS
           </Button>
         </CustomLink>
       </Box>
@@ -272,36 +275,35 @@ const Header: React.FC = () => {
           >
             <WhatsAppIcon sx={{ fontSize: isMobile ? 28 : 40 }} />
           </IconButton>
-          
-            <>
-              <Button
-                variant="outlined"
-                startIcon={<PhoneIcon />}
-                href="tel:+918017508002"
-                size="small"
-                sx={{
-                  color: "white",
-                  backgroundColor: "#28a745",
-                  "&:hover": { backgroundColor: "#218838" },
-                }}
-              >
-                IVR 1
-              </Button>
-              <Button
-                variant="outlined"
-                startIcon={<PhoneIcon />}
-                href="tel:+917477798949"
-                size="small"
-                sx={{
-                  color: "white",
-                  backgroundColor: "#28a745",
-                  "&:hover": { backgroundColor: "#218838" },
-                }}
-              >
-                IVR 2
-              </Button>
-            </>
-          
+
+          <>
+            <Button
+              variant="outlined"
+              startIcon={<PhoneIcon />}
+              href="tel:+918017508002"
+              size="small"
+              sx={{
+                color: "white",
+                backgroundColor: "#28a745",
+                "&:hover": { backgroundColor: "#218838" },
+              }}
+            >
+              IVR 1
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<PhoneIcon />}
+              href="tel:+917477798949"
+              size="small"
+              sx={{
+                color: "white",
+                backgroundColor: "#28a745",
+                "&:hover": { backgroundColor: "#218838" },
+              }}
+            >
+              IVR 2
+            </Button>
+          </>
         </Stack>
       </motion.div>
       <TabWithPopup
