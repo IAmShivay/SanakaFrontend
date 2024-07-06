@@ -52,6 +52,7 @@ const Footer: React.FC = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: "rgba(53, 109, 168, 0.6)",
+        borderRadius:'10px'
       }}
     >
       <Container maxWidth="lg">
