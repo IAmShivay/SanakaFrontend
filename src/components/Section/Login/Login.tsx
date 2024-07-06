@@ -90,7 +90,7 @@ const LoginPage: React.FC = () => {
                 }}
               />
               <Typography variant="h5" gutterBottom>
-                Welcome to E-Shop
+                Welcome to Sanaka-Medical
               </Typography>
               <Typography variant="subtitle1" gutterBottom>
                 Please login to continue
