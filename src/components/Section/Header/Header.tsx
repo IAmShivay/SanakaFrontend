@@ -14,13 +14,13 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
 import Logo from "../../Loader.svg";
 import CustomLink from "../CustomLink/Links";
 import TabWithPopup from "../../PopupForm/PopupForm";
-import { FormData } from "../../Home/Home";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { motion } from "framer-motion";
-
+import { FormData } from "../../Home/Home";
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -130,18 +130,25 @@ const Header: React.FC = () => {
 
   const renderMobileMenu = () => (
     <Drawer anchor="right" open={menuOpen} onClose={handleClose}>
-      <Box sx={{ width: 250, pt: 2 }}>{renderMenuItems()}</Box>
+      <Box sx={{ width: 250, pt: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: 1 }}>
+          <IconButton onClick={handleMenuToggle} size="small">
+            <CloseIcon /> {/* Close icon */}
+          </IconButton>
+        </Box>
+        {renderMenuItems()}
+      </Box>
     </Drawer>
   );
 
   const renderDesktopNav = () => (
     <Box
-    sx={{
-      display: "flex",
-      flexGrow: 1,
-      height: "5vh",
-      alignItems: "center",
-    }}
+      sx={{
+        display: "flex",
+        flexGrow: 1,
+        height: "5vh",
+        alignItems: "center",
+      }}
     >
       <MenuItem onClick={() => handleLinkClick("/")}>
         <Typography variant="body2" color="inherit">
