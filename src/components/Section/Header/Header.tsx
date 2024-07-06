@@ -136,12 +136,12 @@ const Header: React.FC = () => {
 
   const renderDesktopNav = () => (
     <Box
-      sx={{
-        display: "flex",
-        flexGrow: 1,
-        height: "5vh",
-        alignItems: "center",
-      }}
+    sx={{
+      display: "flex",
+      flexGrow: 1,
+      height: "5vh",
+      alignItems: "center",
+    }}
     >
       <MenuItem onClick={() => handleLinkClick("/")}>
         <Typography variant="body2" color="inherit">
@@ -209,7 +209,7 @@ const Header: React.FC = () => {
             variant="outlined"
             size="small"
           >
-            Prospectus
+            Download Prospectus
           </Button>
         </CustomLink>
       </Box>
@@ -222,7 +222,6 @@ const Header: React.FC = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        p: { xs: 1, sm: 2 },
         width: "100%",
         maxWidth: { sm: "100%", md: "95%", lg: "1200px" },
         margin: "0 auto",
