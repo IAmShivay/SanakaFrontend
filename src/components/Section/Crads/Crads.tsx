@@ -41,6 +41,7 @@ export default function ResponsiveCardGrid() {
         alignItems: "center",
         padding: "20px",
         backgroundColor: "#f0f0f0",
+        borderRadius:'10px',
       }}
     >
       <Typography
