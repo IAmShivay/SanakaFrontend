@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useEffect } from "react";
 import { Box, Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
@@ -108,8 +107,6 @@ const CarouselComponent: React.FC = () => {
           height: { xs: '60vh', sm: '70vh', md: '80vh', lg: '90vh' },
           position: 'relative',
           overflow: 'hidden',
-          background: 'linear-gradient(135deg, #0135af, #FFFFFF)',
-          clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0% 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -136,12 +133,10 @@ const CarouselComponent: React.FC = () => {
             <Box
               sx={{
                 position: 'relative',
-                width: { xs: '90%', sm: '85%', md: '80%', lg: '75%' },
-                height: { xs: '80%', sm: '85%', md: '90%' },
+                width: '100%',
+                height: '100%',
                 overflow: 'hidden',
-                borderRadius: '16px',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.7)',
-                backgroundColor: '#fff',
+                borderRadius:'10px'
               }}
             >
               <img
@@ -151,7 +146,7 @@ const CarouselComponent: React.FC = () => {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  borderRadius: '10px',
+                  borderRadius:'10px'
                 }}
               />
               <Box
@@ -168,41 +163,50 @@ const CarouselComponent: React.FC = () => {
                   backgroundColor: 'rgba(0, 0, 0, 0.4)',
                   color: '#fff',
                   padding: { xs: 2, sm: 3, md: 4 },
-                  textAlign: 'center',
                 }}
               >
-                <Typography
-                  variant={isMobile ? "h6" : isTablet ? "h5" : "h4"}
+                <Box
                   sx={{
-                    fontWeight: 'bold',
-                    mb: { xs: 1, sm: 2 },
-                    width: '90%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    maxWidth: '90%',
                   }}
                 >
-                  {product.title}
-                </Typography>
-                <Typography
-                  variant={isMobile ? "body2" : "body1"}
-                  sx={{
-                    mb: { xs: 2, sm: 3 },
-                    width: '90%',
-                    display: { xs: '-webkit-box', md: 'block' },
-                    WebkitLineClamp: { xs: 3, sm: 4 },
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  {product.description}
-                </Typography>
-                <Button
-                  onClick={() => handleButtonClick(product.link)}
-                  variant="contained"
-                  color="primary"
-                  size={isMobile ? "small" : "medium"}
-                >
-                  View More
-                </Button>
+                  <Typography
+                    variant={isMobile ? "h6" : isTablet ? "h5" : "h4"}
+                    sx={{
+                      fontWeight: 'bold',
+                      mb: { xs: 1, sm: 2 },
+                      textAlign: 'center',
+                    }}
+                  >
+                    {product.title}
+                  </Typography>
+                  <Typography
+                    variant={isMobile ? "body2" : "body1"}
+                    sx={{
+                      mb: { xs: 2, sm: 3 },
+                      textAlign: 'center',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      display: '-webkit-box',
+                      WebkitLineClamp: { xs: 3, sm: 4 },
+                      WebkitBoxOrient: 'vertical',
+                    }}
+                  >
+                    {product.description}
+                  </Typography>
+                  <Button
+                    onClick={() => handleButtonClick(product.link)}
+                    variant="contained"
+                    color="primary"
+                    size={isMobile ? "small" : "medium"}
+                  >
+                    View More
+                  </Button>
+                </Box>
               </Box>
             </Box>
           </motion.div>
@@ -220,7 +224,6 @@ const CarouselComponent: React.FC = () => {
             minWidth: { xs: '30px', sm: '40px' },
             width: { xs: '30px', sm: '40px' },
             height: { xs: '30px', sm: '40px' },
-            borderRadius: '50%',
             '&:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.7)',
             },
@@ -241,7 +244,6 @@ const CarouselComponent: React.FC = () => {
             minWidth: { xs: '30px', sm: '40px' },
             width: { xs: '30px', sm: '40px' },
             height: { xs: '30px', sm: '40px' },
-            borderRadius: '50%',
             '&:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.7)',
             },
