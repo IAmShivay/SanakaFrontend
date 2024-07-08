@@ -16,6 +16,7 @@ import { registerUser } from "../../../app/auth/authSlice";
 import { AppDispatch } from "../../../store";
 import { Toaster } from "react-hot-toast";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { Register } from "../../../assets";
 
 interface FormState {
   firstName: string;
@@ -165,7 +166,7 @@ const RegisterPage: React.FC = () => {
           }}
         >
           <img
-            src="/images/consultancy.jpg"
+            src={Register}
             alt="Education Consultancy"
             style={{ maxWidth: "100%", height: "70vh" }}
           />

@@ -3,7 +3,6 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Typography,
   Drawer,
   List,
   ListItem,
@@ -15,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Leads from "../Leads/Lead";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import Dashcard from "../Dashboard/Dashcard";
+import { WhiteLogo } from "../../assets";
 const drawerWidth = 240;
 
 const Dashboard: React.FC = () => {
@@ -36,7 +36,7 @@ const Dashboard: React.FC = () => {
   };
 
   const drawer = (
-    <div style={{ paddingTop: "30%" }}>
+    <div style={{ paddingTop: "20vh" }}>
       <List>
         <ListItem button onClick={() => handleMenuClick(<Dashcard />)}>
           <ListItemText primary="Dashboard" />
@@ -65,10 +65,12 @@ const Dashboard: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Typography variant="h6" noWrap component="div">
-              Admin Dashboard
-            </Typography>
+          <Box sx={{ display: "flex", alignItems: "center",paddingTop:'20px',paddingBottom:'20px' }}>
+            <img
+              src={WhiteLogo}
+              alt="SRIMS"
+              style={{ width: "40vh", height: "auto" }} // Set the specific size for the logo
+            />
             <AdminPanelSettingsIcon sx={{ ml: 1 }} />
           </Box>
         </Toolbar>
