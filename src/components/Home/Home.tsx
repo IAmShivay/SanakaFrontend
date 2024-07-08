@@ -9,6 +9,7 @@ import {
 import { motion } from "framer-motion";
 import TabWithPopup from "../PopupForm/PopupForm";
 import ActionAreaCard from "../Section/Crads/Crads";
+import { HeroBannerH } from "../../assets";
 
 interface Product {
   id: number;
@@ -30,7 +31,7 @@ const products: Product[] = [
     title: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital",
     description:
       "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
-    image: "images/SanakaEducation.jpg",
+    image: HeroBannerH,
     link: "/aboutUs",
   },
 ];

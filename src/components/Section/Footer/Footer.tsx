@@ -10,6 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { Facebook, SRIMS, Website, Whatsapp, Youtube } from "../../../assets";
 
 const Footer: React.FC = () => {
   const theme = useTheme();
@@ -52,7 +53,7 @@ const Footer: React.FC = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: "rgba(53, 109, 168, 0.6)",
-        borderRadius:'10px'
+        borderRadius: "10px",
       }}
     >
       <Container maxWidth="lg">
@@ -60,7 +61,7 @@ const Footer: React.FC = () => {
           <Grid item xs={12} md={4}>
             <Box mb={2}>
               <img
-                src="images/srims-logo-2.png"
+                src={SRIMS}
                 alt="Logo"
                 style={{ height: isMobile ? "40px" : "50px" }}
               />
@@ -107,11 +108,23 @@ const Footer: React.FC = () => {
             >
               Quick Links
             </Typography>
-            <Link to="/aboutUs" style={{ textDecoration: "none", color: "#f0f0f0" }}>
-              <Typography variant="body2" gutterBottom> About Us</Typography>
+            <Link
+              to="/aboutUs"
+              style={{ textDecoration: "none", color: "#f0f0f0" }}
+            >
+              <Typography variant="body2" gutterBottom>
+                {" "}
+                About Us
+              </Typography>
             </Link>
-            <Link to="/faq" style={{ textDecoration: "none", color: "#f0f0f0" }}>
-              <Typography variant="body2" gutterBottom> FAQs</Typography>
+            <Link
+              to="/faq"
+              style={{ textDecoration: "none", color: "#f0f0f0" }}
+            >
+              <Typography variant="body2" gutterBottom>
+                {" "}
+                FAQs
+              </Typography>
             </Link>
           </Grid>
 
@@ -147,29 +160,35 @@ const Footer: React.FC = () => {
           </Typography>
           <Box display="flex" flexWrap="wrap">
             <SocialIcon
-              src="/icons8-facebook-48.png"
+              src={Facebook}
               alt="Facebook"
               href="https://www.facebook.com/MBBSNURSINGadmission"
             />
             <SocialIcon
-              src="/icons8-website-48.png"
+              src={Website}
               alt="Website"
               href="https://www.sanakamedical.com"
             />
             <SocialIcon
-              src="/icons8-whatsapp-96.png"
+              src={Whatsapp}
               alt="WhatsApp"
               href="https://wa.me/+918017508002"
             />
             <SocialIcon
-              src="/icons8-youtube-96.png"
+              src={Youtube}
               alt="YouTube"
               href="https://www.youtube.com/watch?v=JOYQ1yJsde8"
             />
           </Box>
         </Box>
 
-        <Box mt={4} pt={2} borderTop={1} borderColor="grey.300" textAlign="center">
+        <Box
+          mt={4}
+          pt={2}
+          borderTop={1}
+          borderColor="grey.300"
+          textAlign="center"
+        >
           <Typography variant="body2" color="#f0f0f0">
             © 2024 Durgapur Education Foundation. All rights reserved.
           </Typography>

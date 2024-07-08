@@ -7,27 +7,27 @@ import {
   Box,
   Grid,
 } from "@mui/material";
-
+import { Mci, Clause, Courses } from "../../../assets";
 const cards = [
   {
     title: "MCI APPROVED",
     description:
       "Board of Governors in Supersession of Medical Council of India approved 150 MBBS Seats for Academic Session 2021-22.",
-    image: "/images/MCI LOGO.jpg",
+    image: Mci,
     alt: "MCI approved",
   },
   {
     title: "CLAUSE B.1.11",
     description:
       "Shri Ramkrishna Institute of Medical Sciences, situated in Durgapur, boasts a sprawling campus that spans over 50 acres.",
-    image: "/images/CLAUSE.jpeg",
+    image: Clause,
     alt: "Campus",
   },
   {
     title: "COURSES",
     description:
       "We offer a diverse range of courses in medical sciences and engineering, including esteemed programs such as MBBS.",
-    image: "/images/courses.jpeg", 
+    image: Courses,
     alt: "Courses",
   },
 ];
@@ -41,7 +41,7 @@ export default function ResponsiveCardGrid() {
         alignItems: "center",
         padding: "20px",
         backgroundColor: "#f0f0f0",
-        borderRadius:'10px',
+        borderRadius: "10px",
       }}
     >
       <Typography

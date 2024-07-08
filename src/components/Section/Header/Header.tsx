@@ -22,6 +22,7 @@ import TabWithPopup from "../../PopupForm/PopupForm";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { motion } from "framer-motion";
 import { FormData } from "../../Home/Home";
+import { Prospectus } from "../../../assets";
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -216,7 +217,7 @@ const Header: React.FC = () => {
           </Button>
         </CustomLink>
         <Button
-          onClick={() => handleLinkClick("/images/sanakaProspectus")}
+          onClick={() => handleLinkClick(Prospectus)}
           variant="outlined"
           size="small"
           style={{ color: "black", borderColor: "black" }}
