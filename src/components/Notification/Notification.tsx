@@ -77,19 +77,19 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   const demoItems: NotificationItem[] = [
     {
       message: "MBBS admission open for session 2024-2025",
-      link: "/features/dark-mode",
+      link: "/",
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798949",
     },
     {
       message: "Scholarship,Loan & Student Credit Card Facility Available",
-      link: "/summer-sale",
+      link: "/",
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
     },
     {
       message: "25% Scholarship Available",
-      link: "/webinars/react-best-practices",
+      link: "/",
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7063592396",
     },
