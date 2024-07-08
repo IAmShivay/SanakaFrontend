@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
           <Grid item xs={12} md={4}>
             <Box mb={2}>
               <img
-                src="images/Loader.png"
+                src="images/srims-logo-2.png"
                 alt="Logo"
                 style={{ height: isMobile ? "40px" : "50px" }}
               />

@@ -237,6 +237,7 @@ const Header: React.FC = () => {
         width: "100%",
         maxWidth: { sm: "100%", md: "95%", lg: "1200px" },
         margin: "0 auto",
+        pb:'2vh'
       }}
     >
       <Box sx={{ flexShrink: 0 }}>

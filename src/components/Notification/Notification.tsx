@@ -117,7 +117,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#0035b3",
+        backgroundColor: "#0035B3",
         color: "white",
         padding: "10px",
         borderRadius: "5px",
