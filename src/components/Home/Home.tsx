@@ -1,5 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Box, Button, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import TabWithPopup from "../PopupForm/PopupForm";
 import ActionAreaCard from "../Section/Crads/Crads";
@@ -22,7 +28,8 @@ const products: Product[] = [
   {
     id: 1,
     title: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital",
-    description: "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
+    description:
+      "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
     image: "images/SanakaEducation.jpg",
     link: "/aboutUs",
   },
@@ -38,8 +45,8 @@ const CarouselComponent: React.FC = () => {
   const [formFilled, setFormFilled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   useEffect(() => {
     const storedFormFilled = localStorage.getItem("formFilled");
@@ -103,13 +110,15 @@ const CarouselComponent: React.FC = () => {
       <Box
         onClick={handleOpen}
         sx={{
-          width: '100%',
-          height: { xs: '60vh', sm: '70vh', md: '80vh', lg: '90vh' },
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: "100%",
+          height: { xs: "60vh", sm: "70vh", md: "80vh", lg: "90vh" },
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pb: "4vh",
+          borderRadius: "10px",
         }}
       >
         {products.map((product, index) => (
@@ -120,66 +129,66 @@ const CarouselComponent: React.FC = () => {
             animate={index === currentIndex ? "visible" : "hidden"}
             transition={{ ease: "easeInOut", duration: 0.8 }}
             style={{
-              width: '100%',
-              height: '100%',
-              position: 'absolute',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               zIndex: index === currentIndex ? 1 : 0,
               opacity: index === currentIndex ? 1 : 0,
             }}
           >
             <Box
               sx={{
-                position: 'relative',
-                width: '100%',
-                height: '100%',
-                overflow: 'hidden',
-                borderRadius:'10px'
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                overflow: "hidden",
+                borderRadius: "10px",
               }}
             >
               <img
                 src={product.image}
                 alt={product.title}
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius:'10px'
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "10px",
                 }}
               />
               <Box
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 0,
                   left: 0,
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                  color: '#fff',
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "rgba(0, 0, 0, 0.4)",
+                  color: "#fff",
                   padding: { xs: 2, sm: 3, md: 4 },
                 }}
               >
                 <Box
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    maxWidth: '90%',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    maxWidth: "90%",
                   }}
                 >
                   <Typography
                     variant={isMobile ? "h6" : isTablet ? "h5" : "h4"}
                     sx={{
-                      fontWeight: 'bold',
+                      fontWeight: "bold",
                       mb: { xs: 1, sm: 2 },
-                      textAlign: 'center',
+                      textAlign: "center",
                     }}
                   >
                     {product.title}
@@ -188,12 +197,12 @@ const CarouselComponent: React.FC = () => {
                     variant={isMobile ? "body2" : "body1"}
                     sx={{
                       mb: { xs: 2, sm: 3 },
-                      textAlign: 'center',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
+                      textAlign: "center",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
                       WebkitLineClamp: { xs: 3, sm: 4 },
-                      WebkitBoxOrient: 'vertical',
+                      WebkitBoxOrient: "vertical",
                     }}
                   >
                     {product.description}
@@ -214,18 +223,18 @@ const CarouselComponent: React.FC = () => {
         <Button
           onClick={prevProduct}
           sx={{
-            position: 'absolute',
-            top: '50%',
+            position: "absolute",
+            top: "50%",
             left: { xs: 8, sm: 16 },
             zIndex: 2,
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            color: '#fff',
-            minWidth: { xs: '30px', sm: '40px' },
-            width: { xs: '30px', sm: '40px' },
-            height: { xs: '30px', sm: '40px' },
-            '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            transform: "translateY(-50%)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "#fff",
+            minWidth: { xs: "30px", sm: "40px" },
+            width: { xs: "30px", sm: "40px" },
+            height: { xs: "30px", sm: "40px" },
+            "&:hover": {
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             },
           }}
         >
@@ -234,18 +243,18 @@ const CarouselComponent: React.FC = () => {
         <Button
           onClick={nextProduct}
           sx={{
-            position: 'absolute',
-            top: '50%',
+            position: "absolute",
+            top: "50%",
             right: { xs: 8, sm: 16 },
             zIndex: 2,
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            color: '#fff',
-            minWidth: { xs: '30px', sm: '40px' },
-            width: { xs: '30px', sm: '40px' },
-            height: { xs: '30px', sm: '40px' },
-            '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            transform: "translateY(-50%)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "#fff",
+            minWidth: { xs: "30px", sm: "40px" },
+            width: { xs: "30px", sm: "40px" },
+            height: { xs: "30px", sm: "40px" },
+            "&:hover": {
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             },
           }}
         >
