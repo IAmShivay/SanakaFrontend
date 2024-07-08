@@ -6,7 +6,6 @@ import Whatsapp from "../assets/images/Icons/icons-whatsapp.png";
 import Website from "../assets/images/Icons/icons-website.png";
 import Bpharma from "../assets/images/Bpharma.jpeg";
 import Clause from "../assets/images/Clause.jpeg";
-import Consultancy from "../assets/images/Consultancy.jpg";
 import Courses from "../assets/images/Courses.jpeg";
 import Gnm from "../assets/images/Gnm.jpeg";
 import HeroBannerA from "../assets/images/HeroBanner.jpg";
@@ -20,8 +19,10 @@ import Tapan from "../assets/images/Tapan.jpg";
 import MBBS from "../assets/images/mbbs.jpeg";
 import Pgdms from "../assets/images/Pgdms.jpeg";
 import Nursing from "../assets/images/Nursing.jpeg";
+import Register from "../assets/images/SignUp.jpg"
 
 export {
+  Register,
   Bonapart,
   BlackLogo,
   Youtube,
@@ -30,7 +31,6 @@ export {
   Website,
   Bpharma,
   Clause,
-  Consultancy,
   Courses,
   Gnm,
   HeroBannerA,

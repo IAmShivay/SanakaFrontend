@@ -15,6 +15,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../app/auth/authSlice";
 import { AppDispatch } from "../../../store";
+import { Login } from "../../../assets";
 
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -68,7 +69,7 @@ const LoginPage: React.FC = () => {
           }}
         >
           <img
-            src="/images/Login.jpg"
+            src={Login}
             alt="Education Consultancy"
             style={{ maxWidth: "100%", height: "60vh" }}
           />
