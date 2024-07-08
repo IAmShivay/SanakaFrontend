@@ -84,7 +84,11 @@ const Footer: React.FC = () => {
                 variant="outlined"
                 size="small"
                 fullWidth
-                sx={{ mr: 1, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
+                sx={{
+                  mr: 1,
+                  backgroundColor: "rgba(255, 255, 255, 0.9)",
+                  borderRadius: "5px",
+                }}
               />
               <Button
                 variant="contained"
