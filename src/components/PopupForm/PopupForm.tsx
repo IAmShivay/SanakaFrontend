@@ -15,6 +15,7 @@ import {
   createTheme,
   ThemeProvider,
 } from "@mui/material";
+import { useEffect } from "react";
 import { leadRegister } from "../../app/leads/leadSlice";
 import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
@@ -78,8 +79,7 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
   const [confirmationResult, setConfirmationResult] =
     useState<ConfirmationResult | null>(null);
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
-  const [sendOtpLoading, setSendOtpLoading] = useState(false);
-  const [verifyOtpLoading, setVerifyOtpLoading] = useState(false);
+  const [verificationInProgress, setVerificationInProgress] = useState(false);
 
   const handleChange = useCallback(
     (e: any) => {
@@ -122,12 +122,12 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
     }
   }, []);
 
-  const handleSendOtp = useCallback(async () => {
+  const sendOtp = useCallback(async () => {
     if (!phoneError && formData.phoneNumber) {
       try {
-        setSendOtpLoading(true); // Start loading state
+        setVerificationInProgress(true);
         setupRecaptcha();
-        const phoneNumber = "+91" + formData.phoneNumber; // Assuming Indian phone numbers
+        const phoneNumber = "+91" + formData.phoneNumber;
         const appVerifier = window.recaptchaVerifier;
         const confirmation = await signInWithPhoneNumber(
           auth,
@@ -141,17 +141,15 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
         console.error("Error sending OTP:", error);
         toast.error("Failed to send OTP. Please try again.");
       } finally {
-        setSendOtpLoading(false); // Stop loading state
+        setVerificationInProgress(false);
       }
-    } else {
-      toast.error("Please enter a valid phone number.");
     }
   }, [phoneError, formData.phoneNumber, setupRecaptcha]);
 
-  const handleVerifyOtp = useCallback(async () => {
+  const verifyOtp = useCallback(async () => {
     if (confirmationResult && otp) {
       try {
-        setVerifyOtpLoading(true); // Start loading state
+        setVerificationInProgress(true);
         await confirmationResult.confirm(otp);
         toast.success("Phone number verified successfully!");
         setIsPhoneVerified(true);
@@ -159,12 +157,22 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
         console.error("Error verifying OTP:", error);
         toast.error("Invalid OTP. Please try again.");
       } finally {
-        setVerifyOtpLoading(false); // Stop loading state
+        setVerificationInProgress(false);
       }
-    } else {
-      toast.error("Please enter the OTP.");
     }
   }, [confirmationResult, otp]);
+
+  useEffect(() => {
+    if (!phoneError && formData.phoneNumber.length === 10 && !otpSent) {
+      sendOtp();
+    }
+  }, [formData.phoneNumber, phoneError, otpSent, sendOtp]);
+
+  useEffect(() => {
+    if (otp.length === 6 && !isPhoneVerified) {
+      verifyOtp();
+    }
+  }, [otp, isPhoneVerified, verifyOtp]);
 
   const handleSubmit = useCallback(async () => {
     if (
@@ -199,7 +207,7 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
         "Please fill out the form correctly and verify your phone number."
       );
     }
-  }, [dispatch, formData, isPhoneVerified, phoneError]);
+  }, [dispatch, formData, isPhoneVerified, phoneError, onSubmit]);
 
   const isFormValid = useMemo(() => {
     return (
@@ -258,22 +266,6 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
               helperText={phoneError}
               required
             />
-            {!otpSent && (
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#0035B3",
-                  color: "white",
-                  "&:hover": {
-                    bgcolor: "#002188", // Darker shade for hover
-                  },
-                }}
-                onClick={handleSendOtp}
-                disabled={!!phoneError || !formData.phoneNumber || sendOtpLoading}
-              >
-                {sendOtpLoading ? "Sending..." : "Send OTP"}
-              </Button>
-            )}
             {otpSent && !isPhoneVerified && (
               <Box mt={2}>
                 <TextField
@@ -286,21 +278,12 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                 />
-                <Button
-                  variant="contained"
-                  sx={{
-                    bgcolor: "#0035B3",
-                    color: "white",
-                    "&:hover": {
-                      bgcolor: "#002188", // Darker shade for hover
-                    },
-                  }}
-                  onClick={handleVerifyOtp}
-                  disabled={verifyOtpLoading}
-                >
-                  {verifyOtpLoading ? "Verifying..." : "Verify OTP"}
-                </Button>
               </Box>
+            )}
+            {verificationInProgress && (
+              <Typography color="primary" mt={2} mb={2}>
+                Processing...
+              </Typography>
             )}
             {isPhoneVerified && (
               <Typography color="success" mt={2} mb={2}>
@@ -357,7 +340,7 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
               bgcolor: "#0035B3",
               color: "white",
               "&:hover": {
-                bgcolor: "#002188", // Darker shade for hover
+                bgcolor: "#002188",
               },
             }}
           >
