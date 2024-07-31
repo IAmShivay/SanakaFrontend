@@ -81,12 +81,14 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798949",
     },
+
     {
-      message: "Scholarship,Loan & Student Credit Card Facility Available",
-      link: "/",
+      message: "NEET UG 2024 Supreme Court Hearing Live Updates",
+      link: "/NEET.pdf",
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
     },
+
     {
       message: "25% Scholarship Available",
       link: "/",
