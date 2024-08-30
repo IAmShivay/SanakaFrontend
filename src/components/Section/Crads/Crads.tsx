@@ -26,7 +26,7 @@ const cards = [
   {
     title: "COURSES",
     description:
-      "We offer a diverse range of courses in medical sciences and engineering, including esteemed programs such as MBBS.",
+      "We offer a diverse range of courses in medical sciences and engineering, including MBBS ,MD, MS,NURSING,B.PHARMA,B.TECH,GNM,DIPLOMA.",
     image: Courses,
     alt: "Courses",
   },
