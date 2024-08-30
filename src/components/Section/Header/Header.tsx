@@ -118,8 +118,8 @@ const Header: React.FC = () => {
       <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
         <Typography>NEET UPDATES</Typography>
       </MenuItem>
-      <MenuItem onClick={() => handleLinkClick("/contactUs")}>
-        <Typography>FEE DETAILS</Typography>
+      <MenuItem onClick={() => handleLinkClick("/apply-and-enroll")}>
+        <Typography>APPLY NOW</Typography>
       </MenuItem>
       <MenuItem onClick={() => handleLinkClick("/user/login")}>
         <Typography>LOGIN</Typography>
@@ -198,13 +198,13 @@ const Header: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <CustomLink href="/contactUs">
+        <CustomLink href="/apply-and-enroll">
           <Button
             variant="contained"
             size="small"
             sx={{ backgroundColor: "black" }}
           >
-            FEE DETAILS
+            APPLY NOW
           </Button>
         </CustomLink>
         <CustomLink href="/user/login">
@@ -238,7 +238,7 @@ const Header: React.FC = () => {
         width: "100%",
         maxWidth: { sm: "100%", md: "95%", lg: "1200px" },
         margin: "0 auto",
-        pb:'2vh'
+        pb: "2vh",
       }}
     >
       <Box sx={{ flexShrink: 0 }}>
@@ -267,7 +267,7 @@ const Header: React.FC = () => {
       >
         <Stack direction="column" spacing={1} alignItems="center">
           <IconButton
-            href="https://wa.me/918420461369"
+            href="https://wa.me/919046228190"
             target="_blank"
             sx={{
               backgroundColor: "#25D366",

@@ -99,7 +99,7 @@ const ContactUs: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <img
-            src="/images/Loader.png"
+            src="https://static.vecteezy.com/system/resources/previews/007/933/419/original/apply-now-button-apply-now-template-for-website-apply-now-icon-flat-style-vector.jpg"
             alt="Company Logo"
             style={{
               width: "150px",
@@ -114,7 +114,7 @@ const ContactUs: React.FC = () => {
           gutterBottom
           style={{ color: "#3f51b5", marginBottom: "20px" }}
         >
-          Contact Us
+          Apply And Enroll
         </Typography>
         <Box
           component="form"

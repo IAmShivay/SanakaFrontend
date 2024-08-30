@@ -82,7 +82,7 @@ const GeneralRoute: React.FC = () => (
       <Route path="pgmdms" element={<PGMDMSPage />} />
       <Route path="programs" element={<ProgramsPage />} />
       <Route path="gnm" element={<GNMPage />} />
-      <Route path="contactUs" element={<ContactUs />} />
+      <Route path="apply-and-enroll" element={<ContactUs />} />
       <Route path="aboutUs" element={<AboutUs />} />
       <Route path="faq" element={<FAQPage />} />
       <Route path="/neetupdates" element={<NewsComponent />} />

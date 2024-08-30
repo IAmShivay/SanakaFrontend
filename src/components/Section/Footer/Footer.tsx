@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
               Email: contact@sanakamedical.com
             </Typography>
             <Typography variant="body2" gutterBottom color="#f0f0f0">
-              Phone: 84204 61369
+              Phone: 90462 28190
             </Typography>
             <Typography variant="body2" gutterBottom color="#f0f0f0">
               Address: Malandighi, Kanksha, Durgapur-713212, India
