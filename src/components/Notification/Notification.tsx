@@ -87,12 +87,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
     },
-    {
-      message: "25% Scholarship Available",
-      link: "/",
-      ConfirmationMessage:
-        "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7063592396",
-    },
+    
   ];
 
   useEffect(() => {

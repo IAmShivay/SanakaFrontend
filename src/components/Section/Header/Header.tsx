@@ -267,7 +267,7 @@ const Header: React.FC = () => {
       >
         <Stack direction="column" spacing={1} alignItems="center">
           <IconButton
-            href="https://wa.me/919046228190"
+            href="https://wa.me/918420461369"
             target="_blank"
             sx={{
               backgroundColor: "#25D366",
@@ -284,7 +284,7 @@ const Header: React.FC = () => {
             <Button
               variant="outlined"
               startIcon={<PhoneIcon />}
-              href="tel:+918017508002"
+              href="tel:+917477798949"
               size="small"
               sx={{
                 color: "white",
@@ -297,7 +297,7 @@ const Header: React.FC = () => {
             <Button
               variant="outlined"
               startIcon={<PhoneIcon />}
-              href="tel:+917477798949"
+              href="tel:+917063592396"
               size="small"
               sx={{
                 color: "white",
