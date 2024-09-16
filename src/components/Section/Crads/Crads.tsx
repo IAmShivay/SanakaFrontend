@@ -41,7 +41,6 @@ export default function ResponsiveCardGrid() {
         alignItems: "center",
         padding: "20px",
         backgroundColor: "#f0f0f0",
-        borderRadius: "10px",
       }}
     >
       <Typography
@@ -66,7 +65,7 @@ export default function ResponsiveCardGrid() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                width: "100%", // Ensure each grid item takes full width
+                width: "100%",
               }}
             >
               <Card

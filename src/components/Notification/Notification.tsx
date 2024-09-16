@@ -1,10 +1,6 @@
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box, Typography, Link } from "@mui/material";
 import { keyframes } from "@emotion/react";
-import TabWithPopup from "../PopupForm/PopupForm";
-import { FormData } from "../Home/Home";
-import ConfirmationPopup from "./ConfirmationPopup";
-
 const scroll = keyframes`
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -22,57 +18,8 @@ interface NotificationBarProps {
 
 const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
   const notificationRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [formFilled, setFormFilled] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [selectedNotification, setSelectedNotification] = useState<NotificationItem | null>(null);
+  useState<NotificationItem | null>(null);
   const [forceUpdate, setForceUpdate] = useState(false);
-
-  useEffect(() => {
-    const storedFormFilled = localStorage.getItem("formFilled");
-    if (storedFormFilled === "true") {
-      setFormFilled(true);
-    }
-  }, []);
-
-  const handleOpen = useCallback(() => {
-    if (!formFilled) {
-      setIsOpen(true);
-    }
-  }, [formFilled]);
-
-  const handleSubmit = (formData: FormData) => {
-    const hasContent =
-      formData.name.trim() !== "" &&
-      formData.email.trim() !== "" &&
-      formData.phoneNumber.trim() !== "";
-
-    if (hasContent) {
-      setFormFilled(true);
-      localStorage.setItem("formFilled", "true");
-      setIsOpen(false);
-      setShowConfirmation(true);
-    } else {
-      alert("Form is not filled out completely. Please fill it out.");
-    }
-  };
-
-  const handleFormChange = useCallback(
-    (data: { name: string; email: string }) => {
-      setFormFilled(data.name !== "" && data.email !== "");
-    },
-    []
-  );
-
-  const handleLinkClick = (notification: NotificationItem) => {
-    const storedFormFilled = localStorage.getItem("formFilled");
-    if (storedFormFilled === "true") {
-      window.location.href = notification.link!;
-    } else {
-      setSelectedNotification(notification);
-      handleOpen();
-    }
-  };
 
   const demoItems: NotificationItem[] = [
     {
@@ -87,7 +34,6 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
       ConfirmationMessage:
         "Your information has been shared with our College Representative. They will call you back soon. You can also reach them at the following numbers : 7477798950",
     },
-    
   ];
 
   useEffect(() => {
@@ -102,11 +48,11 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setForceUpdate(prev => !prev);
+      setForceUpdate((prev) => !prev);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -115,8 +61,6 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         backgroundColor: "#0035B3",
         color: "white",
         padding: "10px",
-        borderRadius: "5px",
-        marginBottom: "10px",
         overflow: "hidden",
         position: "relative",
         zIndex: 1000,
@@ -139,7 +83,6 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
         {[...demoItems, ...demoItems].map((item, index) => (
           <Link
             key={index}
-            onClick={() => handleLinkClick(item)}
             sx={{
               color: "inherit",
               textDecoration: "none",
@@ -179,19 +122,6 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ duration = 40 }) => {
           </Link>
         ))}
       </Box>
-      <TabWithPopup
-        isOpen={isOpen}
-        onSubmit={handleSubmit}
-        formFilled={formFilled}
-        onFormChange={handleFormChange}
-      />
-      {selectedNotification && (
-        <ConfirmationPopup
-          isOpen={showConfirmation}
-          onClose={() => setShowConfirmation(false)}
-          message={selectedNotification.ConfirmationMessage}
-        />
-      )}
     </Box>
   );
 };

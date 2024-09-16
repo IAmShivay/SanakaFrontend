@@ -48,12 +48,9 @@ const Footer: React.FC = () => {
         position: "relative",
         color: "#f0f0f0",
         py: { xs: 4, md: 6 },
-        mt: 3,
-        backgroundImage: `linear-gradient(rgba(0, 53, 179, 0.6), rgba(0, 53, 179, 0.6)), url('https://images.pexels.com/photos/4492065/pexels-photo-4492065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: "rgba(53, 109, 168, 0.6)",
-        borderRadius: "10px",
       }}
     >
       <Container maxWidth="lg">

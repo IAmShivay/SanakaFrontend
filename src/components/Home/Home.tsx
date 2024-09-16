@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import {
   Box,
   Button,
@@ -7,7 +7,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import TabWithPopup from "../PopupForm/PopupForm";
 import ActionAreaCard from "../Section/Crads/Crads";
 import { HeroBannerH } from "../../assets";
 
@@ -19,12 +18,6 @@ interface Product {
   link: string;
 }
 
-export interface FormData {
-  name: string;
-  email: string;
-  phoneNumber: string;
-}
-
 const products: Product[] = [
   {
     id: 1,
@@ -32,7 +25,7 @@ const products: Product[] = [
     description:
       "Shri Ramkrishna Institute of Medical Sciences and Sanaka Hospital is a private medical college located in Durgapur, West Bengal. It was established in 2019.",
     image: HeroBannerH,
-    link: "/aboutUs",
+    link: "/apply-and-enroll",
   },
 ];
 
@@ -42,49 +35,10 @@ const variants = {
 };
 
 const CarouselComponent: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [formFilled, setFormFilled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
-  useEffect(() => {
-    const storedFormFilled = localStorage.getItem("formFilled");
-    if (storedFormFilled === "true") {
-      setFormFilled(true);
-    }
-  }, []);
-
-  const handleOpen = useCallback(() => {
-    if (!formFilled) {
-      setIsOpen(true);
-    } else {
-      console.log("The form is already filled. Popup is disabled.");
-    }
-  }, [formFilled]);
-
-  const handleSubmit = (formData: FormData) => {
-    const hasContent =
-      formData.name.trim() !== "" &&
-      formData.email.trim() !== "" &&
-      formData.phoneNumber.trim() !== "";
-
-    if (hasContent) {
-      setFormFilled(true);
-      localStorage.setItem("formFilled", "true");
-      setIsOpen(false);
-    } else {
-      alert("Form is not filled out completely. Please fill it out.");
-    }
-  };
-
-  const handleFormChange = useCallback(
-    (data: { name: string; email: string }) => {
-      setFormFilled(data.name !== "" && data.email !== "");
-    },
-    []
-  );
 
   const nextProduct = useCallback(() => {
     setCurrentIndex((prevIndex) =>
@@ -99,17 +53,12 @@ const CarouselComponent: React.FC = () => {
   }, []);
 
   const handleButtonClick = (link: string) => {
-    if (formFilled) {
-      window.location.href = link;
-    } else {
-      handleOpen();
-    }
+    window.location.href = link;
   };
 
   return (
     <>
       <Box
-        onClick={handleOpen}
         sx={{
           width: "100%",
           height: { xs: "60vh", sm: "70vh", md: "80vh", lg: "90vh" },
@@ -118,8 +67,6 @@ const CarouselComponent: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          pb: "4vh",
-          borderRadius: "10px",
         }}
       >
         {products.map((product, index) => (
@@ -146,7 +93,6 @@ const CarouselComponent: React.FC = () => {
                 width: "100%",
                 height: "100%",
                 overflow: "hidden",
-                borderRadius: "10px",
               }}
             >
               <img
@@ -156,7 +102,6 @@ const CarouselComponent: React.FC = () => {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  borderRadius: "10px",
                 }}
               />
               <Box
@@ -214,7 +159,7 @@ const CarouselComponent: React.FC = () => {
                     color="primary"
                     size={isMobile ? "small" : "medium"}
                   >
-                    View More
+                    Apply Now
                   </Button>
                 </Box>
               </Box>
@@ -262,12 +207,6 @@ const CarouselComponent: React.FC = () => {
           &gt;
         </Button>
       </Box>
-      <TabWithPopup
-        isOpen={isOpen}
-        onSubmit={handleSubmit}
-        formFilled={formFilled}
-        onFormChange={handleFormChange}
-      />
       <ActionAreaCard />
     </>
   );

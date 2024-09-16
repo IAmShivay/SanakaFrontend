@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogActions,
@@ -10,62 +10,23 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Typography,
   Box,
   createTheme,
   ThemeProvider,
 } from "@mui/material";
-import { useEffect } from "react";
-import { leadRegister } from "../../app/leads/leadSlice";
-import { AppDispatch } from "../../store";
-import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { states } from "./state";
-import { auth } from "../../firebase/firebaseConfig";
-import {
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-  ConfirmationResult,
-} from "firebase/auth";
-
-interface TabWithPopupProps {
-  isOpen: boolean;
-  formFilled: boolean;
-  onSubmit: (data: FormData) => void;
-  onFormChange: (data: { name: string; email: string }) => void;
-  onClose?: () => void;
-}
-
-interface FormData {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  course: string;
-  place: string;
-}
-
-declare global {
-  interface Window {
-    recaptchaVerifier: RecaptchaVerifier;
-  }
-}
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#0035B3", // Set primary color to the provided color
+      main: "#0035B3",
     },
   },
 });
 
-const TabWithPopup: React.FC<TabWithPopupProps> = ({
-  isOpen,
-  onSubmit,
-  onFormChange,
-  onClose,
-}) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const [formData, setFormData] = useState<FormData>({
+const SimplePopup: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phoneNumber: "",
@@ -74,157 +35,46 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
   });
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [confirmationResult, setConfirmationResult] =
-    useState<ConfirmationResult | null>(null);
-  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
-  const [verificationInProgress, setVerificationInProgress] = useState(false);
 
-  const handleChange = useCallback(
-    (e: any) => {
-      const { name, value } = e.target;
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
 
-      setFormData((prev) => ({
-        ...prev,
-        [name as string]: value as string,
-      }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
 
-      if (name === "phoneNumber") {
-        const isValidPhoneNumber = /^\d{10}$/.test(value as string);
-        setPhoneError(
-          isValidPhoneNumber ? null : "Phone number must be 10 digits."
-        );
-      }
-      if (name === "email") {
-        const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value as string);
-        setEmailError(
-          isValidEmail ? null : "Please enter a valid email address."
-        );
-      }
-      onFormChange({
-        name: formData.name,
-        email: formData.email,
+    if (name === "phoneNumber") {
+      const isValidPhoneNumber = /^\d{10}$/.test(value);
+      setPhoneError(isValidPhoneNumber ? null : "Phone number must be 10 digits.");
+    }
+    if (name === "email") {
+      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      setEmailError(isValidEmail ? null : "Please enter a valid email address.");
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!phoneError && !emailError && formData.name && formData.email && formData.phoneNumber && formData.course && formData.place) {
+      toast.success("Form submitted successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        course: "",
+        place: "",
       });
-    },
-    [formData.name, formData.email, onFormChange]
-  );
-
-  const setupRecaptcha = useCallback(() => {
-    if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,
-        "recaptcha-container",
-        {
-          size: "invisible",
-        }
-      );
-    }
-  }, []);
-
-  const sendOtp = useCallback(async () => {
-    if (!phoneError && formData.phoneNumber) {
-      try {
-        setVerificationInProgress(true);
-        setupRecaptcha();
-        const phoneNumber = "+91" + formData.phoneNumber;
-        const appVerifier = window.recaptchaVerifier;
-        const confirmation = await signInWithPhoneNumber(
-          auth,
-          phoneNumber,
-          appVerifier
-        );
-        setConfirmationResult(confirmation);
-        setOtpSent(true);
-        toast.success("OTP sent successfully!");
-      } catch (error) {
-        console.error("Error sending OTP:", error);
-        toast.error("Failed to send OTP. Please try again.");
-      } finally {
-        setVerificationInProgress(false);
-      }
-    }
-  }, [phoneError, formData.phoneNumber, setupRecaptcha]);
-
-  const verifyOtp = useCallback(async () => {
-    if (confirmationResult && otp) {
-      try {
-        setVerificationInProgress(true);
-        await confirmationResult.confirm(otp);
-        toast.success("Phone number verified successfully!");
-        setIsPhoneVerified(true);
-      } catch (error) {
-        console.error("Error verifying OTP:", error);
-        toast.error("Invalid OTP. Please try again.");
-      } finally {
-        setVerificationInProgress(false);
-      }
-    }
-  }, [confirmationResult, otp]);
-
-  useEffect(() => {
-    if (!phoneError && formData.phoneNumber.length === 10 && !otpSent) {
-      sendOtp();
-    }
-  }, [formData.phoneNumber, phoneError, otpSent, sendOtp]);
-
-  useEffect(() => {
-    if (otp.length === 6 && !isPhoneVerified) {
-      verifyOtp();
-    }
-  }, [otp, isPhoneVerified, verifyOtp]);
-
-  const handleSubmit = useCallback(async () => {
-    if (
-      !phoneError &&
-      formData.name &&
-      formData.email &&
-      formData.phoneNumber &&
-      formData.course &&
-      formData.place &&
-      isPhoneVerified
-    ) {
-      onSubmit(formData);
-      try {
-        await dispatch(leadRegister(formData));
-        toast.success("Form submitted successfully!");
-      } catch (err: any) {
-        toast.error(err.message || "Something went wrong. Please try again.");
-      } finally {
-        setFormData({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          course: "",
-          place: "",
-        });
-        setOtpSent(false);
-        setOtp("");
-        setIsPhoneVerified(false);
-      }
+      setIsOpen(false);
     } else {
-      toast.error(
-        "Please fill out the form correctly and verify your phone number."
-      );
+      toast.error("Please fill out the form correctly.");
     }
-  }, [dispatch, formData, isPhoneVerified, phoneError, onSubmit]);
+  };
 
-  const isFormValid = useMemo(() => {
-    return (
-      !phoneError &&
-      !emailError &&
-      formData.name &&
-      formData.email &&
-      formData.phoneNumber &&
-      formData.course &&
-      formData.place &&
-      isPhoneVerified
-    );
-  }, [emailError, formData, isPhoneVerified, phoneError]);
+  const isFormValid = !phoneError && !emailError && formData.name && formData.email && formData.phoneNumber && formData.course && formData.place;
 
   return (
     <ThemeProvider theme={theme}>
-      <Dialog open={isOpen} onClose={onClose}>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <DialogTitle>Fill the Form</DialogTitle>
         <DialogContent>
           <Box component="form" noValidate autoComplete="off">
@@ -266,30 +116,6 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
               helperText={phoneError}
               required
             />
-            {otpSent && !isPhoneVerified && (
-              <Box mt={2}>
-                <TextField
-                  margin="dense"
-                  name="otp"
-                  label="Enter OTP"
-                  type="text"
-                  fullWidth
-                  variant="outlined"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                />
-              </Box>
-            )}
-            {verificationInProgress && (
-              <Typography color="primary" mt={2} mb={2}>
-                Processing...
-              </Typography>
-            )}
-            {isPhoneVerified && (
-              <Typography color="success" mt={2} mb={2}>
-                Verified! 📞✅
-              </Typography>
-            )}
             <FormControl fullWidth margin="dense">
               <InputLabel id="course-label">Course</InputLabel>
               <Select
@@ -322,11 +148,9 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
                 label="Place"
                 required
               >
-                {states.map((state) => (
-                  <MenuItem key={state} value={state}>
-                    {state}
-                  </MenuItem>
-                ))}
+                {/* Replace with your actual state options */}
+                <MenuItem value="State1">State1</MenuItem>
+                <MenuItem value="State2">State2</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -346,11 +170,13 @@ const TabWithPopup: React.FC<TabWithPopupProps> = ({
           >
             Submit
           </Button>
+          <Button onClick={() => setIsOpen(false)} color="inherit">
+            Cancel
+          </Button>
         </DialogActions>
-        <div id="recaptcha-container"></div>
       </Dialog>
     </ThemeProvider>
   );
 };
 
-export default React.memo(TabWithPopup);
+export default SimplePopup;

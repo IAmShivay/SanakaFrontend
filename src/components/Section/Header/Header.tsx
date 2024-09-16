@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   Menu,
   MenuItem,
@@ -14,154 +14,49 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
+import CloseIcon from "@mui/icons-material/Close";
 import DownloadIcon from "@mui/icons-material/Download";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Logo from "../../Loader.svg";
 import CustomLink from "../CustomLink/Links";
-import TabWithPopup from "../../PopupForm/PopupForm";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { motion } from "framer-motion";
-import { FormData } from "../../Home/Home";
 import { Prospectus } from "../../../assets";
+
+// Utility function to avoid repetitive code
+const renderMenuItem = (
+  label: string,
+  link: string,
+  onClick: (link: string) => void
+) => (
+  <MenuItem onClick={() => onClick(link)}>
+    <Typography>{label}</Typography>
+  </MenuItem>
+);
+
 const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [formFilled, setFormFilled] = useState(false);
   const [academicsMenuOpen, setAcademicsMenuOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMedium = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
-  const academicsAnchorRef = useRef(null);
-
-  useEffect(() => {
-    const storedFormFilled = localStorage.getItem("formFilled");
-    if (storedFormFilled === "true") {
-      setFormFilled(true);
-    }
-  }, []);
-
-  const handleOpen = useCallback(() => {
-    if (!formFilled) {
-      setIsOpen(true);
-    }
-  }, [formFilled]);
-
-  const handleSubmit = (formData: FormData) => {
-    const hasContent =
-      formData.name.trim() !== "" &&
-      formData.email.trim() !== "" &&
-      formData.phoneNumber.trim() !== "";
-
-    if (hasContent) {
-      setFormFilled(true);
-      localStorage.setItem("formFilled", "true");
-      setIsOpen(false);
-    } else {
-      alert("Form is not filled out completely. Please fill it out.");
-    }
-  };
-
-  const handleFormChange = useCallback(
-    (data: { name: string; email: string }) => {
-      setFormFilled(data.name !== "" && data.email !== "");
-    },
-    []
-  );
+  const academicsAnchorRef: any = useRef<HTMLDivElement>(null);
 
   const handleLinkClick = (link: string) => {
-    const storedFormFilled = localStorage.getItem("formFilled");
-    if (storedFormFilled === "true") {
-      window.location.href = link;
-    } else {
-      handleOpen();
-    }
+    window.location.href = link;
   };
 
   const handleMenuToggle = (): void => {
     setMenuOpen((prev) => !prev);
   };
 
-  const handleClose = (): void => {
-    setMenuOpen(false);
-  };
-
   const handleAcademicsMenuToggle = (): void => {
     setAcademicsMenuOpen((prev) => !prev);
   };
 
-  const renderMenuItems = () => (
-    <>
-      <MenuItem onClick={() => handleLinkClick("/")}>
-        <Typography>HOME</Typography>
-      </MenuItem>
-      <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
-        <Typography>ABOUT US</Typography>
-      </MenuItem>
-      <MenuItem onClick={handleAcademicsMenuToggle}>
-        <Typography>ACADEMICS</Typography>
-        <ArrowDropDownIcon />
-      </MenuItem>
-      {academicsMenuOpen && (
-        <Box ml={2}>
-          <MenuItem onClick={() => handleLinkClick("/programs")}>
-            <Typography>PROGRAMS</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => handleLinkClick("/research")}>
-            <Typography>RESEARCH</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => handleLinkClick("/faculty")}>
-            <Typography>FACULTY</Typography>
-          </MenuItem>
-        </Box>
-      )}
-      <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
-        <Typography>NEET UPDATES</Typography>
-      </MenuItem>
-      <MenuItem onClick={() => handleLinkClick("/apply-and-enroll")}>
-        <Typography>APPLY NOW</Typography>
-      </MenuItem>
-      <MenuItem onClick={() => handleLinkClick("/user/login")}>
-        <Typography>LOGIN</Typography>
-      </MenuItem>
-      <MenuItem onClick={() => handleLinkClick("/images/sanakaProspectus")}>
-        <Typography>PROSPECTUS</Typography>
-      </MenuItem>
-    </>
-  );
-
-  const renderMobileMenu = () => (
-    <Drawer anchor="right" open={menuOpen} onClose={handleClose}>
-      <Box sx={{ width: 250, pt: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-end", pr: 1 }}>
-          <IconButton onClick={handleMenuToggle} size="small">
-            <CloseIcon /> {/* Close icon */}
-          </IconButton>
-        </Box>
-        {renderMenuItems()}
-      </Box>
-    </Drawer>
-  );
-
   const renderDesktopNav = () => (
-    <Box
-      sx={{
-        display: "flex",
-        flexGrow: 1,
-        height: "5vh",
-        alignItems: "center",
-      }}
-    >
-      <MenuItem onClick={() => handleLinkClick("/")}>
-        <Typography variant="body2" color="inherit">
-          HOME
-        </Typography>
-      </MenuItem>
-      <MenuItem onClick={() => handleLinkClick("/aboutUs")}>
-        <Typography variant="body2" color="inherit">
-          ABOUT US
-        </Typography>
-      </MenuItem>
+    <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+      {renderMenuItem("HOME", "/", handleLinkClick)}
+      {renderMenuItem("ABOUT US", "/aboutUs", handleLinkClick)}
       <MenuItem ref={academicsAnchorRef} onClick={handleAcademicsMenuToggle}>
         <Typography variant="body2" color="inherit">
           ACADEMICS
@@ -175,29 +70,12 @@ const Header: React.FC = () => {
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         transformOrigin={{ vertical: "top", horizontal: "left" }}
       >
-        <MenuItem onClick={() => handleLinkClick("/programs")}>
-          <Typography variant="body2">PROGRAMS</Typography>
-        </MenuItem>
-        <MenuItem onClick={() => handleLinkClick("/research")}>
-          <Typography variant="body2">RESEARCH</Typography>
-        </MenuItem>
-        <MenuItem onClick={() => handleLinkClick("/faculty")}>
-          <Typography variant="body2">FACULTY</Typography>
-        </MenuItem>
+        {renderMenuItem("PROGRAMS", "/programs", handleLinkClick)}
+        {renderMenuItem("RESEARCH", "/research", handleLinkClick)}
+        {renderMenuItem("FACULTY", "/faculty", handleLinkClick)}
       </Menu>
-      <MenuItem onClick={() => handleLinkClick("/neetupdates")}>
-        <Typography variant="body2" color="inherit">
-          NEET UPDATES
-        </Typography>
-      </MenuItem>
-      <Box
-        sx={{
-          marginLeft: "auto",
-          display: "flex",
-          gap: 1,
-          alignItems: "center",
-        }}
-      >
+      {renderMenuItem("NEET UPDATES", "/neetupdates", handleLinkClick)}
+      <Box sx={{ marginLeft: "auto", display: "flex", gap: 1 }}>
         <CustomLink href="/apply-and-enroll">
           <Button
             variant="contained"
@@ -220,7 +98,7 @@ const Header: React.FC = () => {
           onClick={() => handleLinkClick(Prospectus)}
           variant="outlined"
           size="small"
-          style={{ color: "black", borderColor: "black" }}
+          sx={{ color: "black", borderColor: "black" }}
         >
           <DownloadIcon style={{ color: "black" }} />
           PROSPECTUS
@@ -229,9 +107,43 @@ const Header: React.FC = () => {
     </Box>
   );
 
+  const renderMobileMenu = () => (
+    <Drawer anchor="right" open={menuOpen} onClose={handleMenuToggle}>
+      <Box sx={{ width: 250, pt: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", pr: 1 }}>
+          <IconButton onClick={handleMenuToggle} size="small">
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        {renderMenuItem("HOME", "/", handleLinkClick)}
+        {renderMenuItem("ABOUT US", "/aboutUs", handleLinkClick)}
+        <MenuItem onClick={handleAcademicsMenuToggle}>
+          <Typography>ACADEMICS</Typography>
+          <ArrowDropDownIcon />
+        </MenuItem>
+        {academicsMenuOpen && (
+          <Box ml={2}>
+            {renderMenuItem("PROGRAMS", "/programs", handleLinkClick)}
+            {renderMenuItem("RESEARCH", "/research", handleLinkClick)}
+            {renderMenuItem("FACULTY", "/faculty", handleLinkClick)}
+          </Box>
+        )}
+        {renderMenuItem("NEET UPDATES", "/neetupdates", handleLinkClick)}
+        {renderMenuItem("APPLY NOW", "/apply-and-enroll", handleLinkClick)}
+        {renderMenuItem("LOGIN", "/user/login", handleLinkClick)}
+        {renderMenuItem(
+          "PROSPECTUS",
+          "/images/assets/SanakaProspectus.pdf",
+          handleLinkClick
+        )}
+      </Box>
+    </Drawer>
+  );
+
   return (
     <Box
       sx={{
+        pt: "2vh",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -272,50 +184,41 @@ const Header: React.FC = () => {
             sx={{
               backgroundColor: "#25D366",
               color: "white",
-              borderRadius: "50%",
+              // borderRadius: "50%",
               width: isMobile ? 48 : 64,
               height: isMobile ? 48 : 64,
             }}
           >
             <WhatsAppIcon sx={{ fontSize: isMobile ? 28 : 40 }} />
           </IconButton>
-
-          <>
-            <Button
-              variant="outlined"
-              startIcon={<PhoneIcon />}
-              href="tel:+917477798949"
-              size="small"
-              sx={{
-                color: "white",
-                backgroundColor: "#28a745",
-                "&:hover": { backgroundColor: "#218838" },
-              }}
-            >
-              IVR 1
-            </Button>
-            <Button
-              variant="outlined"
-              startIcon={<PhoneIcon />}
-              href="tel:+917063592396"
-              size="small"
-              sx={{
-                color: "white",
-                backgroundColor: "#28a745",
-                "&:hover": { backgroundColor: "#218838" },
-              }}
-            >
-              IVR 2
-            </Button>
-          </>
+          <Button
+            variant="outlined"
+            startIcon={<PhoneIcon />}
+            href="tel:+917477798949"
+            size="small"
+            sx={{
+              color: "white",
+              backgroundColor: "#28a745",
+              "&:hover": { backgroundColor: "#218838" },
+            }}
+          >
+            IVR 1
+          </Button>
+          <Button
+            variant="outlined"
+            startIcon={<PhoneIcon />}
+            href="tel:+917063592396"
+            size="small"
+            sx={{
+              color: "white",
+              backgroundColor: "#28a745",
+              "&:hover": { backgroundColor: "#218838" },
+            }}
+          >
+            IVR 2
+          </Button>
         </Stack>
       </motion.div>
-      <TabWithPopup
-        isOpen={isOpen}
-        onSubmit={handleSubmit}
-        formFilled={formFilled}
-        onFormChange={handleFormChange}
-      />
     </Box>
   );
 };
