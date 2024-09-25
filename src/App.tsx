@@ -15,6 +15,7 @@ import FAQPage from "./components/Section/Faq/Faq";
 import Lead from "./components/Leads/Lead";
 import NewsComponent from "./components/Section/News/news";
 import PDFViewer from "./components/Section/pdf/pdf";
+import StandaloneForm from "./components/PopupForm/PopupForm";
 
 const Footer = React.lazy(() => import("./components/Section/Footer/Footer"));
 const Header = React.lazy(() => import("./components/Section/Header/Header"));
@@ -32,9 +33,10 @@ const AdminAcessRequest = React.lazy(
 const AboutUs = React.lazy(
   () => import("./components/Section/AboutUs/AboutUs")
 );
-const ContactUs = React.lazy(
-  () => import("./components/Section/ContactUs/ContactUS")
-);
+// const ContactUs = React.lazy(
+//   () => import("./components/Section/ContactUs/ContactUS")
+// );
+
 const UserDashboard = React.lazy(() => import("./components/User/Main"));
 
 const App: React.FC = () => {
@@ -82,7 +84,7 @@ const GeneralRoute: React.FC = () => (
       <Route path="pgmdms" element={<PGMDMSPage />} />
       <Route path="programs" element={<ProgramsPage />} />
       <Route path="gnm" element={<GNMPage />} />
-      <Route path="apply-and-enroll" element={<ContactUs />} />
+      <Route path="apply-and-enroll" element={<StandaloneForm/>} />
       <Route path="aboutUs" element={<AboutUs />} />
       <Route path="faq" element={<FAQPage />} />
       <Route path="/neetupdates" element={<NewsComponent />} />
